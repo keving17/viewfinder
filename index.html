@@ -13,7 +13,9 @@
   "style.css">
 
 <!-- Load any supplemental Javascript libraries here -->
-<script></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
+
+<script type="text/javascript" src="script.js"></script>
 
 </head>
 
@@ -21,24 +23,36 @@
 
 <div id="navigation">
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-5">
     </div>
-    <div class="col-md-6">
-      <h3 id="Search"><a href="/search">Search</a></h3>
-      <h3 id="Inspiration"><a href="/inspiration">Inspiration</a></h3>
-      <h3 id="Portfolio"><a href="/portfolio">Portfolio</a></h3>
-      <h3 id="Pinned"><a href="/pinned">Pinned</a></h3>
+    <div class="col-md-7">
+      <h3 id="Search"><a href="/search">SEARCH</a></h3>
+      <h3 id="Inspiration"><a href="/inspiration">INSPIRATION</a></h3>
+      <h3 id="Portfolio"><a href="/portfolio">PORTFOLIO</a></h3>
+      <h3 id="Pinned"><a href="/pinned">PINNED</a></h3>
     </div>
   </div>
 </div>
 
 <div class="container">
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-6" id="inspiration">
       <h2>Inspiration</h2>
+      <div class="row">
+        <div class="col-md-6" id="inspr-col-1">
+        </div>
+        <div class="col-md-6" id="inspr-col-2">
+        </div>
+      </div>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-6" id="favorites">
       <h2>Favorites</h2>
+      <div class="row">
+        <div class="col-md-6" id="fav-col-1">
+        </div>
+        <div class="col-md-6" id="fav-col-2">
+        </div>
+      </div>
     </div>
   </div>
   

@@ -1,7 +1,11 @@
+#navigation {
+	margin-top: 30px;
+}
+
 #navigation div h3 {
 	display: inline;
 	margin: 10px 10px 10px 10px;
-	padding: 3px;
+	padding: 5px;
 }
 
 .row {
@@ -12,4 +16,29 @@
 .container {
 	margin: auto;
 	margin-top: 30px;
+}
+
+.photo {
+	border: 1px solid black;
+	width: 200px;
+	height: 200px;
+	margin: 20px;
+	display: block;
+}
+
+.heart-div {
+	height: 20px;
+}
+
+.heart {
+	float: right;
+	width: 20px;
+	height: 20px;
+	margin-top: 3px;
+	margin-right: 3px;
+}
+
+.filters {
+	margin-top: 23px;
+	text-align: center;
 }
