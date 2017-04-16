@@ -18,6 +18,18 @@
 	margin-top: 30px;
 }
 
+#inspiration {
+	overflow: auto;
+	width: 540px;
+	height: 520px;
+}
+
+#favorites {
+	overflow: auto;
+	width: 540px;
+	height: 520px;
+}
+
 .photo {
 	border: 1px solid black;
 	width: 200px;
