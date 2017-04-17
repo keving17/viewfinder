@@ -30,6 +30,11 @@
 	height: 520px;
 }
 
+#pinned {
+	overflow: auto;
+	width: 1080px;
+}
+
 .photo {
 	border: 1px solid black;
 	width: 200px;
