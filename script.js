@@ -21,7 +21,7 @@ $(document).ready(function() {
 		button.setAttribute('class', 'heart-div');
 		var heart = document.createElement('input');
 		heart.setAttribute('type', 'image');
-		heart.setAttribute('src', 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Heart_coraz%C3%B3n.svg/169px-Heart_coraz%C3%B3n.svg.png');
+		heart.setAttribute('src', './heart.png');
 		heart.setAttribute('class', 'heart');
 		button.appendChild(heart);
 		photo.appendChild(button);
@@ -56,7 +56,7 @@ $(document).ready(function() {
 	var hearts = document.getElementsByClassName('heart');
 	for (h=0; h<hearts.length; h++) {
 		var heart = hearts[h];
-		heart.style.filter = 'contrast(0%)';
+		heart.style.filter = 'grayscale(1.0)';
 	}
 });
 
@@ -65,7 +65,9 @@ $(document).on('click', '#inspiration .heart', function(evt)
 	var photo = evt.target.parentElement.parentElement.cloneNode(true);
 	var heart = photo.childNodes[0].childNodes[0];
 
-	if (heart.style.filter == 'contrast(0%)') {
+	if (evt.target.style.filter == 'grayscale(1)') {
+		evt.target.style.filter = 'grayscale(0)';
+		heart.style.filter = 'grayscale(0)';
 		var column;
 		var column1 = document.getElementById('fav-col-1');
 		var column2 = document.getElementById('fav-col-2');
@@ -79,10 +81,9 @@ $(document).on('click', '#inspiration .heart', function(evt)
 		photo.setAttribute('id', 'fav'+photo.id.substr(4,photo.id.length));
 
 		column.appendChild(photo);
-		heart.style.filter = 'contrast(100%)';
-		evt.target.style.filter = 'contrast(100%)';
 	} else {
-		evt.target.style.filter = 'contrast(0%)';
+		evt.target.style.filter = 'grayscale(1.0)';
+		heart.style.filter = 'grayscale(1.0)';
 		var fav = document.getElementById('fav'+photo.id.substr(4,photo.id.length));
 		fav.parentElement.removeChild(fav);
 	}
@@ -94,6 +95,8 @@ $(document).on('click', '#favorites .heart', function(evt)
 	var heart = photo.childNodes[0].childNodes[0];
 	var inspr = document.getElementById('photo'+photo.id.substr(4,photo.id.length));
 
-	inspr.childNodes[0].childNodes[0].style.filter = 'contrast(0%)';
+	inspr.childNodes[0].childNodes[0].style.filter = 'grayscale(1.0)';
+	heart.style.filter = 'grayscale(1.0)';
+
 	photo.parentElement.removeChild(photo);
 });

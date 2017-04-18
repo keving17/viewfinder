@@ -1,5 +1,5 @@
 var FILTERS = ['grass', 'water', 'building', 'sculpture'];
-var NUM_PHOTOS = 3
+var NUM_PHOTOS = 8
 
 $(document).ready(function() {
 	for (p=0; p<NUM_PHOTOS; p++) {
