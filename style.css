@@ -50,6 +50,7 @@ body {
 	display: block;
 	border-radius: 6px;
 	padding: 10px 0;
+	width: 1080px;
 }
 
 .row {
@@ -123,6 +124,9 @@ body {
 	height: 20px;
 	margin-top: 3px;
 	margin-right: 3px;
+}
+.pinimage:focus, textarea:focus {
+    outline: none;
 }
 .filters {
 	margin-top: 23px;

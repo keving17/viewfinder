@@ -73,7 +73,7 @@ $(document).ready(function() {
 		pin.setAttribute('type', 'image');
 		pin.setAttribute('src', './pin.png');
 		pin.setAttribute('class', 'pinimage');
-		pin.style.filter = 'contrast(0%)'
+		pin.style.filter = 'contrast(100%)'
 		title.appendChild(pin);
 
 
@@ -115,6 +115,9 @@ $(document).on('click', '.pinimage', function(evt)
 
 	if (evt.target.style.filter == 'contrast(100%)') {
 		evt.target.style.filter = 'contrast(0%)';
+		console.log(evt)
+		var selection = evt.target.parentElement.parentElement.parentElement.parentElement
+		selection.parentElement.removeChild(selection);
 	} else {
 		evt.target.style.filter = 'contrast(100%)';
 	}
