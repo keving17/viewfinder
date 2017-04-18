@@ -53,6 +53,17 @@ body {
 	width: 1080px;
 }
 
+.index {
+	font-weight: 700;
+	background-color: rgb(239, 100, 97);
+	color: white;
+	margin-left: 30px;
+	margin-right: 30px;
+	display: block;
+	border-radius: 6px;
+	padding: 10px 0;
+}
+
 .row {
 	text-align: center;
 	margin: 15px;
@@ -71,6 +82,12 @@ body {
 .container {
 	margin: auto;
 	margin-top: 30px;
+	padding: 0px;
+	text-align: center;
+}
+
+.col-md-6 {
+	padding: 0px;
 }
 
 #inspiration {
@@ -91,11 +108,13 @@ body {
 }
 
 .photo {
-	border: 1px solid black;
+	border-radius: 6px;
 	width: 200px;
 	height: 200px;
 	margin: 20px;
 	display: block;
+	background-color: white;
+	padding: 3px;
 }
 
 .pin.photo {
