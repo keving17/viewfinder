@@ -1,10 +1,10 @@
-var FILTERS = ['grass', 'water', 'building', 'sculpture'];
-var NUM_ALBUMS = 4;
+var ALBUM_NAMES = ["Pete's Wedding", "Joe's Birthday Party", "Emily's Dance"];
+var NUM_ALBUMS = ALBUM_NAMES.length;
 
 //loads albums and the new album buttons
 function loadAlbums(){
     for (i=0; i<NUM_ALBUMS; i++) {
-        var name = "album " + i;
+        var name = ALBUM_NAMES[i];
 
         var album = document.createElement('button');
         album.setAttribute('id', 'album-'+i);

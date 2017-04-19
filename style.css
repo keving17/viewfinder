@@ -113,6 +113,16 @@ body {
 	width: 1080px;
 }
 
+#newAlbum {
+	box-shadow: 0 0 5px -1px rgba(0,0,0,0.2);
+	vertical-align:middle;
+	text-align:center;
+	-webkit-appearance:button;
+	border-width:2px;
+	border-style:outset;
+	border-color:buttonface;
+}
+
 .album {
 	border-radius: 6px;
 	width: 200px;

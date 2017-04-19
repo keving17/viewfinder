@@ -1,18 +1,11 @@
 var FILTERS = ['grass', 'water', 'building', 'sculpture'];
-var NUM_PHOTOS = 12;
+var PHOTO_FILES = ['alchemist','dome','dome2','kresge','redsculpture','river','simmons','stata','stata2','stata3'];
+var NUM_PHOTOS = 8;
 
 //loads pictures
 function loadPictures(){
     for (p=0; p<NUM_PHOTOS; p++) {
-        var available = FILTERS.slice();
-        var filters = [];
-        var num_filters = Math.floor(Math.random()*FILTERS.length)+1;
-        for (r=0; r<num_filters; r++) {
-            var random = Math.floor(Math.random()*available.length);
-            var f = available[random];
-            available.splice(random,1);
-            filters.push(f);
-        }
+        var photoFile = PHOTO_FILES[Math.floor(Math.random()*PHOTO_FILES.length)];//file containing the photo chosen
 
         //the entire div
         var photoInfo = document.createElement('div');
@@ -23,15 +16,18 @@ function loadPictures(){
         photo.setAttribute('class', 'photo');
 
         //the actual picture
-        var pic = document.createElement('div');
+        var pic = document.createElement('img');
         pic.setAttribute('id', 'uploadphoto-'+p);
         pic.setAttribute('class', 'pic');
+        pic.setAttribute('src',"images/" + photoFile + ".jpg");
+        pic.setAttribute('width', '200px');
+        pic.setAttribute('height', '200px');
         photo.appendChild(pic);
         photoInfo.appendChild(photo);
 
         //name for each photo
         var name = document.createElement('div');
-        name.innerHTML = "photo " + p;
+        name.innerHTML = photoFile;
         photoInfo.appendChild(name);
 
         //tags for each photo
@@ -47,19 +43,6 @@ function loadPictures(){
         
         photoInfo.appendChild(tags);
 
-        var filtersList = document.createElement('div');
-        filtersList.setAttribute('class', 'filters');
-        filtersList.setAttribute('display', 'block');
-        filtersList.setAttribute('text-align', 'center');
-        filtersList.setAttribute('vertical-align', 'center');
-        filtersList.setAttribute('margin', 'auto');
-        for (f=0; f<filters.length; f++) {
-            var filter = document.createElement('div');
-            filter.innerHTML = filters[f];
-            filtersList.appendChild(filter);
-        }
-        pic.appendChild(filtersList);
-
         var column = document.getElementById('uploadphotos-col-' + (p%4 + 1));
         column.appendChild(photoInfo);
     }
@@ -69,8 +52,14 @@ $(document).ready(function() {
     loadPictures();
 });
 
-$(document).on('click', '#newAlbum', function(evt) {
-    loadNewAlbum();
+$(document).on('click', '#upload-button', function(evt) {
+    window.location.href = "./portfolio.html";
+    //somehow get a dialog to appear to show the user that upload was successful
+    /*
+    $(document).ready(function(){
+        $(".container").prepend("<dialog>Successful album upload</dialog>");
+    });
+    */
 });
 
 
