@@ -159,3 +159,41 @@ body {
 .title {
 	font-weight: 700;
 }
+
+#searchheader {
+  text-align: left;
+  font-weight: bold;
+  color: purple;
+}
+
+#searchform {
+  text-align: left;
+}
+
+#searchgobutton {
+ margin-top: 2px;
+ font-weight: bold;
+ color: blue;
+}
+
+#mapimage {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+}
+
+#mapcontainer {
+  display:inline-block;
+  position:relative;
+  width:100%;
+}
+
+.mappin{
+  position:absolute;
+  z-index:200;
+  height: 32px;
+  width: 32px;
+}
+.pin-div{
+  position:absolute;
+}
