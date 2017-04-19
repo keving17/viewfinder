@@ -78,23 +78,25 @@ $(document).on('click', '#inspiration .heart', function(evt)
 		heart.style.filter = 'grayscale(0)';
 		photo.childNodes[1].style.filter = 'grayscale(0)';
 		// heart.setAttribuet('src', './images/heart.png');
-		var column;
-		var column1 = document.getElementById('fav-col-1');
-		var column2 = document.getElementById('fav-col-2');
+		// var column;
+		// var column1 = document.getElementById('fav-col-1');
+		// var column2 = document.getElementById('fav-col-2');
+		var row = document.getElementById('favorites');
 
-		if (column1.childNodes.length == column2.childNodes.length) {
-			column = column1;
-		} else {
-			column = column2;
-		}
+		// if (column1.childNodes.length == column2.childNodes.length) {
+		// 	column = column1;
+		// } else {
+		// 	column = column2;
+		// }
 
-		photo.setAttribute('id', 'fav'+photo.id.substr(4,photo.id.length));
+		photo.setAttribute('id', 'fav'+photo.id.substr(5,photo.id.length));
 
-		column.appendChild(photo);
+		// column.appendChild(photo);
+		row.appendChild(photo);
 	} else {
 		heart.style.filter = 'grayscale(1.0)';
 		// heart.setAttribute('src', './images/unheart.png');
-		var fav = document.getElementById('fav'+photo.id.substr(4,photo.id.length));
+		var fav = document.getElementById('fav'+photo.id.substr(5,photo.id.length));
 		fav.parentElement.removeChild(fav);
 	}
 });
@@ -103,8 +105,8 @@ $(document).on('click', '#favorites .heart', function(evt)
 {
 	var photo = evt.target.parentElement;
 	var heart = evt.target;
-	var inspr = document.getElementById('photo'+photo.id.substr(4,photo.id.length));
-
+	var inspr = document.getElementById('photo-'+photo.id.substr(4,photo.id.length));
+	console.log('photo'+photo.id.substr(4,photo.id.length));
 	inspr.childNodes[1].style.filter = 'grayscale(1.0)';
 	heart.style.filter = 'grayscale(1.0)';
 	// inspr.childNodes[0].childNodes[0].src = './images/unheart.png';
