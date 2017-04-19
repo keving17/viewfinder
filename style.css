@@ -107,6 +107,16 @@ body {
 	width: 1080px;
 }
 
+.album {
+	border-radius: 6px;
+	width: 200px;
+	height: 200px;
+	margin: 20px;
+	display: block;
+	background-color: white;
+	padding: 3px;
+}
+
 .photo {
 	border-radius: 6px;
 	width: 200px;
