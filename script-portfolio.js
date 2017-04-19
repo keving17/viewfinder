@@ -31,9 +31,10 @@ function loadAlbums(){
 
     //for adding the new album button
     var addNewAlbumName = "Add new album";
-    var newAlbum = document.createElement('button');
+    var newAlbum = document.createElement('a');
     newAlbum.setAttribute('id', 'newAlbum');
     newAlbum.setAttribute('class', 'album');
+    newAlbum.setAttribute('href', './newalbum.html');
 
     var newAlbumName = document.createElement('div');
     newAlbumName.setAttribute('class', 'album-text');
@@ -71,3 +72,5 @@ $(document).ready(function() {
 $(document).on('click', '#newAlbum', function(evt) {
     loadNewAlbum();
 });
+
+

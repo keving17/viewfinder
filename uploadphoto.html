@@ -16,13 +16,6 @@
 <!-- Load any supplemental Javascript libraries here -->
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
 
-<script>
-$(document).ready(function(){
-  document.getElementById("upload").onclick = function(){
-      window.location.href = "./uploadphoto.html";
-  };
-});
-</script>
 </head>
 
 <body>
@@ -43,10 +36,11 @@ $(document).ready(function(){
 
 <div class="container">
   <div class="row">
-    <div class="col-md-6" >
-      <button class="index" id = "upload">Upload Photos</button>
+    <div id="content">
+      <h2>Photos</h2>
     </div>
+  </div>
+  
+</div> 
 
 </body>
-
-</html> 
