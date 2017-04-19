@@ -118,6 +118,11 @@ body {
 	padding: 3px;
 }
 
+.btn {
+	background-color: rgba(239, 100, 97, 1);
+	color: rgba(254, 255, 254, 1);
+}
+
 .photo {
 	border-radius: 6px;
 	width: 200px;
