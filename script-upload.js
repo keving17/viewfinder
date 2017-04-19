@@ -14,14 +14,38 @@ function loadPictures(){
             filters.push(f);
         }
 
+        //the entire div
+        var photoInfo = document.createElement('div');
+        
+        //the photo div
         var photo = document.createElement('div');
         photo.setAttribute('id', 'photo-'+p);
         photo.setAttribute('class', 'photo');
 
+        //the actual picture
         var pic = document.createElement('div');
-        pic.setAttribute('id', 'inspr-'+p);
+        pic.setAttribute('id', 'uploadphoto-'+p);
         pic.setAttribute('class', 'pic');
         photo.appendChild(pic);
+        photoInfo.appendChild(photo);
+
+        //name for each photo
+        var name = document.createElement('div');
+        name.innerHTML = "photo " + p;
+        photoInfo.appendChild(name);
+
+        //tags for each photo
+        var tags = document.createElement('div');
+        tags.innerHTML = "Tags<br>";
+        
+
+        //actual tag box
+        var tagBox = document.createElement('input');
+        tagBox.setAttribute('type', 'text');
+        tagBox.setAttribute('data-role', 'tagsinput');
+        tags.appendChild(tagBox);
+        
+        photoInfo.appendChild(tags);
 
         var filtersList = document.createElement('div');
         filtersList.setAttribute('class', 'filters');
@@ -37,7 +61,7 @@ function loadPictures(){
         pic.appendChild(filtersList);
 
         var column = document.getElementById('uploadphotos-col-' + (p%4 + 1));
-        column.appendChild(photo);
+        column.appendChild(photoInfo);
     }
 }
 
