@@ -107,31 +107,44 @@ body {
 	width: 1080px;
 }
 
+.col-md-6 {
+	position: relative;
+}
+
 .photo {
-	border-radius: 6px;
 	width: 200px;
 	height: 200px;
 	margin: 20px;
 	display: block;
-	background-color: white;
 	padding: 3px;
+	position: relative;
 }
 
-.pin.photo {
+.photo img {
+	z-index: -2;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+}
+
+.photo .heart {
+	position: absolute;
+	z-index: 1;
+	width: 30px;
+	height: 30px;
+	top: 10px;
+	right: 10px;
+}
+
+.pin .photo {
 	margin: 0;
 }
 
-.heart-div {
-	height: 20px;
-}
-
-.heart {
+/*.heart {
 	float: right;
 	width: 20px;
 	height: 20px;
-	margin-top: 3px;
-	margin-right: 3px;
-}
+}*/
 
 .heart:focus, textarea:focus {
     outline: none;
@@ -194,6 +207,7 @@ body {
   height: 32px;
   width: 32px;
 }
+
 .pin-div{
   position:absolute;
 }
