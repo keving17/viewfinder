@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8">
+<title>ViewFinder</title>
+
+<!-- Load style sheets -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.css">
+<link href="https://fonts.googleapis.com/css?family=Catamaran:300,400,700" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" href="lib/bootstrap-tagsinput.css">
+<link rel="stylesheet" href= "style.css">
+
+<!-- Load any supplemental Javascript libraries here -->
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="script-search.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js"></script>
+<script src="lib/bootstrap-tagsinput.min.js"></script>
+</head>
+
+<body>
+
+<div id="navigation">
+  <div class="row">
+    <div class="col-md-5">
+      <h1><a href="./index.html">ViewFinder</a></h1>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-5">
+      <h3 id="Pinned"><a href="./pinned.html">PINNED</a></h3>
+      <h3 id="Portfolio"><a href="./portfolio.html">PORTFOLIO</a></h3>
+      <h3 id="Inspiration"><a href="./index.html">INSPIRATION</a></h3>
+      <h3 id="Search"><a href="./search.html">SEARCH</a></h3>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <h2 class="index">Directions</h2>
+  <div class="row">
+    <div class="col-md-5">
+      <div id="place">
+          <h4 class="title" style="font-size: 30px">
+          <input type="image" src="./pin.png" class="pinimage" style="filter: contrast(100%);">
+          Stata Center
+        </h4>
+      </div>
+      <div id="directions">
+        <ol>
+          <li>Turn right</li>
+          <li>Turn left</li>
+          <li>Go straight for 5 miles</li>
+          <li>Your destination is on the left</li>
+        </ol>
+      </div>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-5">
+        <div id="mapcontainer">
+        </div>
+    </div>
+  </div>
+</div>
+
+</body>
+
+</html>

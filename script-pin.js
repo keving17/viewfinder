@@ -83,7 +83,8 @@ $(document).ready(function() {
 		pin.setAttribute('type', 'image');
 		pin.setAttribute('src', './pin.png');
 		pin.setAttribute('class', 'pinimage');
-		pin.style.filter = 'contrast(100%)'
+		pin.style.filter = 'contrast(100%)';
+		pin.setAttribute('id', 'pinnedpage');
 		title.appendChild(pin);
 
 
