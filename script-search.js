@@ -61,6 +61,11 @@ $(document).on('click', '#searchgobutton', function(evt)
 	refreshImages();
 });
 
+$(document).on('click', '#searchphotoimg', function(evt)
+{
+	window.location.href = "./directions.html";
+});
+
 $(document).on('keydown', function(evt)
 {
   if (evt.keyCode == 13/*enter*/) {
@@ -96,6 +101,7 @@ function refreshImages()
 		photo.setAttribute('class', 'photo');
 
 		var img = document.createElement('img');
+		img.setAttribute('id', 'searchphotoimg');
 		img.setAttribute('src', src);
 		img.setAttribute('width', '200px');
 		img.setAttribute('height', '200px');
