@@ -112,5 +112,8 @@ $(document).on('click', '#favorites .heart', function(evt)
 	// inspr.childNodes[0].childNodes[0].src = './images/unheart.png';
 	// heart.src = './images/unheart.png';
 
-	photo.parentElement.removeChild(photo);
+	// photo.parentElement.removeChild(photo);
+	$('#'+photo.id).fadeOut(500,function(){
+  			this.remove();
+  	});
 });

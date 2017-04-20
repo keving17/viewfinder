@@ -189,7 +189,7 @@ body {
 }
 
 .pinimage {
-	float: left;
+/*	float: left;*/
 	width: 20px;
 	height: 20px;
 	margin-top: 3px;
@@ -222,7 +222,7 @@ body {
 }
 
 #searchgobutton {
- margin-top: 2px;
+ margin-top: 3px;
  font-weight: bold;
  color: blue;
 }
@@ -266,4 +266,13 @@ body {
 
 .pin-div{
   position:absolute;
+}
+
+#directions {
+	font-size: 20px;
+	text-align: left;
+}
+
+#pinnedpage.pinimage {
+	float: left;
 }

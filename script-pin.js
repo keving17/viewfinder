@@ -53,7 +53,8 @@ $(document).ready(function() {
 		pin.setAttribute('type', 'image');
 		pin.setAttribute('src', './pin.png');
 		pin.setAttribute('class', 'pinimage');
-		pin.style.filter = 'contrast(100%)'
+		pin.style.filter = 'contrast(100%)';
+		pin.setAttribute('id', 'pinnedpage');
 		title.appendChild(pin);
 
 
@@ -99,7 +100,7 @@ $(document).on('click', '.pinimage', function(evt)
 		evt.target.style.filter = 'contrast(0%)';
 		var selection = evt.target.parentElement.parentElement.parentElement.parentElement;
 		$('#'+selection.id).fadeOut(500,function(){
-  			this.remove()
+  			this.remove();
   		});
 	} else {
 		evt.target.style.filter = 'contrast(100%)';
