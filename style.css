@@ -114,6 +114,13 @@ body {
 }
 
 #newAlbum {
+	border-radius: 6px;
+	width: 200px;
+	height: 200px;
+	margin: 20px;
+	display: block;
+	background-color: white;
+	padding: 3px;
 	box-shadow: 0 0 5px -1px rgba(0,0,0,0.2);
 	vertical-align:middle;
 	text-align:center;
@@ -218,6 +225,24 @@ body {
  margin-top: 2px;
  font-weight: bold;
  color: blue;
+}
+
+.searchtitleholder {
+ margin-top: -8px;
+ margin-bottom: 32px;
+}
+
+.searchpinimage {
+	float: left;
+	width: 20px;
+	height: 20px;
+	margin-left: 20px;
+	margin-top: 0px;
+	margin-right: 3px;
+}
+
+.searchpinimage:focus, textarea:focus {
+    outline: none;
 }
 
 #mapimage {
