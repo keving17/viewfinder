@@ -1,4 +1,4 @@
-var SOURCES = ['alchemist', 'dome', 'dome2', 'kresge', 'redsculpture', 'river', 'simmons', 'stata', 'stata2', 'stata3'];
+var SOURCES_LOC = [['Alchemist', '84 Massachusetts Ave, MIT Stratton Student Center Lawn, Cambridge, MA 02139', 'alchemist'],['MIT\'s Great Dome','77 Massachusetts Ave, Cambridge, MA 02139','dome'],['MIT\'s Great Dome','77 Massachusetts Ave, Cambridge, MA 02139','dome2'],['Kresge Auditorium','48 Massachusetts Ave, Cambridge, MA 02139','kresge'],['For Marjorie','500 Memorial Drive, Cambridge, MA 02139','redsculpture'],['McCormick Hall', '320 Memorial Drive, Cambridge, MA 02139','river'],['Simmons Hall', '229 Vassar St, Cambridge, MA 02139','simmons'],['Stata Center', '32 Vassar St, Cambridge, MA 02139','stata2'],['Aesop\'s Fables, II', '32 Vassar St, Cambridge, MA 02139','stata3']];
 
 var MIN_NUM_PHOTOS = 2
 var NUM_MAPS = 3
@@ -84,12 +84,10 @@ function refreshImages()
 
 	var NUM_PHOTOS = MIN_NUM_PHOTOS + Math.floor(Math.random()*4);
 	for (p=0; p<NUM_PHOTOS; p++) {
-		var available = SOURCES.slice();
+		var available = SOURCES_LOC.slice(0);
 
 		var random = Math.floor(Math.random()*available.length);
-		var src = './images/'+available[random]+'.jpg';
-		console.log(src);
-		available.splice(random,1);
+		var src = './images/'+available[random][2]+'.jpg';
 
 		var photoDiv = document.createElement('div');
 
@@ -140,8 +138,10 @@ function refreshImages()
 		var title = document.createElement('h4');
 		titleHolder.setAttribute('class','searchtitleholder')
 		title.setAttribute('class','title');
-		title.innerHTML = "Stata Center";
+		title.innerHTML = available[random][0];
 		titleHolder.appendChild(title)
+
+		available.splice(random,1);
 
 		var pin = document.createElement('input');
 		pin.setAttribute('type', 'image');
