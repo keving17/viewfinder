@@ -1,9 +1,11 @@
-var FILTERS = ['grass', 'water', 'building', 'sculpture'];
-var NUM_PHOTOS = 8
+//(Name of Location, address, image src)
+var SOURCES_LOC = [['Alchemist', '84 Massachusetts Ave, MIT Stratton Student Center Lawn, Cambridge, MA 02139', 'alchemist'],['MIT\'s Great Dome','77 Massachusetts Ave, Cambridge, MA 02139','dome'],['MIT\'s Great Dome','77 Massachusetts Ave, Cambridge, MA 02139','dome2'],['Kresge Auditorium','48 Massachusetts Ave, Cambridge, MA 02139','kresge'],['For Marjorie','500 Memorial Drive, Cambridge, MA 02139','redsculpture'],['Boston Skyline from McCormick Hall', '320 Memorial Drive, Cambridge, MA 02139','river'],['Simmons Hall', '229 Vassar St, Cambridge, MA 02139','simmons'],['Stata Center', '32 Vassar St, Cambridge, MA 02139','stata'],['Stata Center', '32 Vassar St, Cambridge, MA 02139','stata2'],['Aesop\'s Fables, II', '32 Vassar St, Cambridge, MA 02139','stata3']];
+var NUM_PHOTOS = 8;
 
 $(document).ready(function() {
+	var available = SOURCES_LOC.slice(0);
 	for (p=0; p<NUM_PHOTOS; p++) {
-		var available = FILTERS.slice();
+/*		var available = FILTERS.slice();
 		var filters = [];
 		var num_filters = Math.floor(Math.random()*FILTERS.length)+1;
 		for (r=0; r<num_filters; r++) {
@@ -12,6 +14,7 @@ $(document).ready(function() {
 			available.splice(random,1);
 			filters.push(f);
 		}
+*/
 		var row = document.createElement('div');
 		row.setAttribute('class','row pin');
 		row.setAttribute('id','pinned');
@@ -25,20 +28,27 @@ $(document).ready(function() {
 		row.appendChild(leftDiv);
 		row.appendChild(rightDiv);
 
+		var random = Math.floor(Math.random()*available.length);
+		var src = './images/'+available[random][2]+'.jpg';
+		
+
 		var photo = document.createElement('div');
 		photo.setAttribute('id', 'photo-'+p);
-		photo.setAttribute('class', 'photo pin');
+		photo.setAttribute('class', 'photo');
 
-		var button = document.createElement('div');
-		button.setAttribute('class', 'heart-div');
+		var img = document.createElement('img');
+		img.setAttribute('src', src);
+		img.setAttribute('width', '200px');
+		img.setAttribute('height', '200px');
+		photo.appendChild(img);
+
 		var heart = document.createElement('input');
 		heart.setAttribute('type', 'image');
-		heart.setAttribute('src', './heart.png');
+		heart.setAttribute('src', './images/heart.png');
 		heart.setAttribute('class', 'heart');
-		button.appendChild(heart);
-		photo.appendChild(button);
+		photo.appendChild(heart);
 
-		var pic = document.createElement('div');
+/*		var pic = document.createElement('div');
 		pic.setAttribute('id', 'inspr-'+p);
 		pic.setAttribute('class', 'pic');
 		photo.appendChild(pic);
@@ -57,14 +67,14 @@ $(document).ready(function() {
 			//rightDiv.innerHTML = rightDiv.innerHTML + filters[f] +", "
 			
 		}
-		pic.appendChild(filtersList);
+		pic.appendChild(filtersList);*/
 
 		var titleHolder = document.createElement('div');
 		var title = document.createElement('h4');
 		title.setAttribute('class','title');
-		title.innerHTML = "Stata Center";
+		title.innerHTML = available[random][0];
 		var address = document.createElement('div');
-		address.innerHTML = "32 Vassar St, Cambridge, MA 02139";
+		address.innerHTML = available[random][1];
 
 		var description = document.createElement('div');
 		description.innerHTML = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque non sapien vel odio tempus cursus. Donec vitae libero massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Maecenas elementum nisl id ullamcorper scelerisque. Nam quis arcu gravida, vestibulum ipsum ut, malesuada tellus. Morbi eu imperdiet elit. Morbi condimentum dignissim nunc scelerisque cursus. Mauris nec neque facilisis, consequat est quis, eleifend magna."
@@ -85,7 +95,12 @@ $(document).ready(function() {
 		leftDiv.appendChild(photo);
 
 		document.getElementById('content').appendChild(row);
-
+		console.log(available[random]);
+		console.log(available[random][0]);
+		console.log(available[random][1]);
+		console.log(available[random][2]);
+		console.log(src);
+		available.splice(random,1);
 	}
 
 	var hearts = document.getElementsByClassName('heart');
