@@ -5,16 +5,7 @@ var NUM_PHOTOS = 8;
 $(document).ready(function() {
 	var available = SOURCES_LOC.slice(0);
 	for (p=0; p<NUM_PHOTOS; p++) {
-/*		var available = FILTERS.slice();
-		var filters = [];
-		var num_filters = Math.floor(Math.random()*FILTERS.length)+1;
-		for (r=0; r<num_filters; r++) {
-			var random = Math.floor(Math.random()*available.length);
-			var f = available[random];
-			available.splice(random,1);
-			filters.push(f);
-		}
-*/
+
 		var row = document.createElement('div');
 		row.setAttribute('class','row pin');
 		row.setAttribute('id','pinned'+p);
@@ -48,27 +39,6 @@ $(document).ready(function() {
 		heart.setAttribute('class', 'heart');
 		photo.appendChild(heart);
 
-/*		var pic = document.createElement('div');
-		pic.setAttribute('id', 'inspr-'+p);
-		pic.setAttribute('class', 'pic');
-		photo.appendChild(pic);
-
-		var filtersList = document.createElement('div');
-		filtersList.setAttribute('class', 'filters');
-		filtersList.setAttribute('display', 'block');
-		filtersList.setAttribute('text-align', 'center');
-		filtersList.setAttribute('vertical-align', 'center');
-		filtersList.setAttribute('margin', 'auto');
-		for (f=0; f<filters.length; f++) {
-			var filter = document.createElement('div');
-			filter.innerHTML = filters[f];
-			filtersList.appendChild(filter);
-
-			//rightDiv.innerHTML = rightDiv.innerHTML + filters[f] +", "
-			
-		}
-		pic.appendChild(filtersList);*/
-
 		var titleHolder = document.createElement('div');
 		var title = document.createElement('h4');
 		title.setAttribute('class','title');
@@ -95,11 +65,6 @@ $(document).ready(function() {
 		leftDiv.appendChild(photo);
 
 		document.getElementById('content').appendChild(row);
-		//console.log(available[random]);
-		//console.log(available[random][0]);
-		//console.log(available[random][1]);
-		//console.log(available[random][2]);
-		//console.log(src);
 		available.splice(random,1);
 	}
 
@@ -132,15 +97,10 @@ $(document).on('click', '.pinimage', function(evt)
 
 	if (evt.target.style.filter == 'contrast(100%)') {
 		evt.target.style.filter = 'contrast(0%)';
-		//console.log(evt);
 		var selection = evt.target.parentElement.parentElement.parentElement.parentElement;
-		//console.log(jQuery.type(selection));
-		//console.log(selection);
-		//console.log(selection.id);
 		$('#'+selection.id).fadeOut(500,function(){
   			this.remove()
   		});
-		//selection.parentElement.removeChild(selection);
 	} else {
 		evt.target.style.filter = 'contrast(100%)';
 	}
