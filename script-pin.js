@@ -136,7 +136,7 @@ $(document).on('click', '.pinimage', function(evt)
 		console.log(selection);
 		console.log(selection.id);
 		$('#'+selection.id).fadeOut(500,function(){
-  			this.remove()
+  			this.remove();
   		});
 		//selection.parentElement.removeChild(selection);
 	} else {
