@@ -17,7 +17,7 @@ $(document).ready(function() {
 */
 		var row = document.createElement('div');
 		row.setAttribute('class','row pin');
-		row.setAttribute('id','pinned');
+		row.setAttribute('id','pinned'+p);
 
 		var leftDiv = document.createElement('div');
 		leftDiv.setAttribute('class','col-md-3 pin-col-photos');
@@ -130,9 +130,15 @@ $(document).on('click', '.pinimage', function(evt)
 
 	if (evt.target.style.filter == 'contrast(100%)') {
 		evt.target.style.filter = 'contrast(0%)';
-		console.log(evt)
-		var selection = evt.target.parentElement.parentElement.parentElement.parentElement
-		selection.parentElement.removeChild(selection);
+		console.log(evt);
+		var selection = evt.target.parentElement.parentElement.parentElement.parentElement;
+		console.log(jQuery.type(selection));
+		console.log(selection);
+		console.log(selection.id);
+		$('#'+selection.id).fadeOut(500,function(){
+  			this.remove()
+  		});
+		//selection.parentElement.removeChild(selection);
 	} else {
 		evt.target.style.filter = 'contrast(100%)';
 	}
