@@ -95,11 +95,11 @@ $(document).ready(function() {
 		leftDiv.appendChild(photo);
 
 		document.getElementById('content').appendChild(row);
-		console.log(available[random]);
-		console.log(available[random][0]);
-		console.log(available[random][1]);
-		console.log(available[random][2]);
-		console.log(src);
+		//console.log(available[random]);
+		//console.log(available[random][0]);
+		//console.log(available[random][1]);
+		//console.log(available[random][2]);
+		//console.log(src);
 		available.splice(random,1);
 	}
 
@@ -111,13 +111,15 @@ $(document).ready(function() {
 
 });
 
-$(document).on('click', '#pinned .heart', function(evt)
+$(document).on('click', '.heart', function(evt)
 {
 	var photo = evt.target.parentElement.parentElement.cloneNode(true);
 	var heart = photo.childNodes[0].childNodes[0];
+	console.log('here')
 
 	if (evt.target.style.filter == 'grayscale(0)') {
 		evt.target.style.filter = 'grayscale(1.0)';
+
 	} else {
 		evt.target.style.filter = 'grayscale(0)';
 	}
@@ -130,11 +132,11 @@ $(document).on('click', '.pinimage', function(evt)
 
 	if (evt.target.style.filter == 'contrast(100%)') {
 		evt.target.style.filter = 'contrast(0%)';
-		console.log(evt);
+		//console.log(evt);
 		var selection = evt.target.parentElement.parentElement.parentElement.parentElement;
-		console.log(jQuery.type(selection));
-		console.log(selection);
-		console.log(selection.id);
+		//console.log(jQuery.type(selection));
+		//console.log(selection);
+		//console.log(selection.id);
 		$('#'+selection.id).fadeOut(500,function(){
   			this.remove()
   		});
