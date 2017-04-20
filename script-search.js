@@ -1,4 +1,6 @@
-var NUM_PHOTOS = 8
+var SOURCES = ['alchemist', 'dome', 'dome2', 'kresge', 'redsculpture', 'river', 'simmons', 'stata', 'stata2', 'stata3'];
+
+var MIN_NUM_PHOTOS = 2
 var NUM_MAPS = 3
 
 $(document).ready(function() {
@@ -16,6 +18,15 @@ $(document).on('click', '.heart', function(evt)
 {
 	if (evt.target.style.filter == 'grayscale(1)') {
 		evt.target.style.filter = 'grayscale(0)';
+	} else {
+		evt.target.style.filter = 'grayscale(1.0)';
+	}
+});
+
+$(document).on('click', '.searchpinimage', function(evt)
+{
+	if (evt.target.style.opacity == 0.25) {
+		evt.target.style.opacity = 1.0;
 
 		// Show pin
 		var mapX = evt.target.getAttribute('mapx');
@@ -34,7 +45,7 @@ $(document).on('click', '.heart', function(evt)
 		button.appendChild(pin);
 		document.getElementById('mapcontainer').appendChild(button);
 	} else {
-		evt.target.style.filter = 'grayscale(1.0)';
+		evt.target.style.opacity = 0.25;
 
 		// Hide pin
 		var mapX = evt.target.getAttribute('mapx');
@@ -71,36 +82,34 @@ function refreshImages()
 		return;
 	}
 
+	var NUM_PHOTOS = MIN_NUM_PHOTOS + Math.floor(Math.random()*4);
 	for (p=0; p<NUM_PHOTOS; p++) {
-		var available = FILTERS.slice();
-		var filters = [];
-		var num_filters = Math.floor(Math.random()*FILTERS.length)+1;
-		for (r=0; r<num_filters && r<5; r++) {
-			var random = Math.floor(Math.random()*available.length);
-			var f = available[random];
-			available.splice(random,1);
-			filters.push(f);
-		}
+		var available = SOURCES.slice();
+
+		var random = Math.floor(Math.random()*available.length);
+		var src = './images/'+available[random]+'.jpg';
+		console.log(src);
+		available.splice(random,1);
+
+		var photoDiv = document.createElement('div');
 
 		var photo = document.createElement('div');
 		photo.setAttribute('id', 'photo-'+p);
 		photo.setAttribute('class', 'photo');
+
+		var img = document.createElement('img');
+		img.setAttribute('src', src);
+		img.setAttribute('width', '200px');
+		img.setAttribute('height', '200px');
+		photo.appendChild(img);
 
 		var button = document.createElement('div');
 		button.setAttribute('class', 'heart-div');
 
 		var heart = document.createElement('input');
 		heart.setAttribute('type', 'image');
-		heart.setAttribute('src', './heart.png');
+		heart.setAttribute('src', './images/heart.png');
 		heart.setAttribute('class', 'heart');
-
-  	var map = document.getElementById('mapimage');
-		var mapWidth = map.clientWidth;
-		var mapHeight = map.clientHeight;
-		var randomX = Math.floor(Math.random()*mapWidth);
-		var randomY = Math.floor(Math.random()*mapHeight);
-		heart.setAttribute('mapX', randomX);
-		heart.setAttribute('mapY', randomY);
 		button.appendChild(heart);
 		photo.appendChild(button);
 
@@ -109,6 +118,7 @@ function refreshImages()
 		pic.setAttribute('class', 'pic');
 		photo.appendChild(pic);
 
+		/*
 		var filtersList = document.createElement('div');
 		filtersList.setAttribute('class', 'filters');
 		filtersList.setAttribute('display', 'block');
@@ -121,13 +131,41 @@ function refreshImages()
 			filtersList.appendChild(filter);
 		}
 		pic.appendChild(filtersList);
+		*/
 
-		if (p%2 == 1) {
+		var div = document.createElement('div');
+		photo.appendChild(div);
+
+		var titleHolder = document.createElement('div');
+		var title = document.createElement('h4');
+		titleHolder.setAttribute('class','searchtitleholder')
+		title.setAttribute('class','title');
+		title.innerHTML = "Stata Center";
+		titleHolder.appendChild(title)
+
+		var pin = document.createElement('input');
+		pin.setAttribute('type', 'image');
+		pin.setAttribute('src', './pin.png');
+		pin.setAttribute('class', 'searchpinimage');
+		pin.style.filter = 'contrast(100%)'
+	  var map = document.getElementById('mapimage');
+		var mapWidth = map.clientWidth;
+		var mapHeight = map.clientHeight;
+		var randomX = Math.floor(Math.random()*mapWidth);
+		var randomY = Math.floor(Math.random()*mapHeight);
+		pin.setAttribute('mapX', randomX);
+		pin.setAttribute('mapY', randomY);
+		title.appendChild(pin);
+
+		photoDiv.appendChild(photo);
+		photoDiv.appendChild(titleHolder);
+
+		if (p%2 == 0) {
 			var column = document.getElementById('search-col-1');
-			column.appendChild(photo);
+			column.appendChild(photoDiv);
 		} else {
 			var column = document.getElementById('search-col-2');
-			column.appendChild(photo);
+			column.appendChild(photoDiv);
 		}
 	}
 
@@ -135,5 +173,11 @@ function refreshImages()
 	for (h=0; h<hearts.length; h++) {
 		var heart = hearts[h];
 		heart.style.filter = 'grayscale(1.0)';
+	}
+
+	var pins = document.getElementsByClassName('searchpinimage');
+	for (p=0; p<pins.length; p++) {
+		var pin = pins[p];
+		pin.style.opacity = 0.25;
 	}
 }

@@ -227,6 +227,24 @@ body {
  color: blue;
 }
 
+.searchtitleholder {
+ margin-top: -8px;
+ margin-bottom: 32px;
+}
+
+.searchpinimage {
+	float: left;
+	width: 20px;
+	height: 20px;
+	margin-left: 20px;
+	margin-top: 0px;
+	margin-right: 3px;
+}
+
+.searchpinimage:focus, textarea:focus {
+    outline: none;
+}
+
 #mapimage {
   position: absolute;
   z-index: 1;
