@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="utf-8">
+<title>ViewFinder</title>
+
+<!-- Load style sheets -->
+<link rel="stylesheet" href=
+  "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.css">
+<link href="https://fonts.googleapis.com/css?family=Catamaran:300,400,700" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" href="lib/bootstrap-tagsinput.css">
+<link rel="stylesheet" href="style.css">
+
+<!-- Load any supplemental Javascript libraries here -->
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="script-album.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js"></script>
+<script src="lib/bootstrap-tagsinput.min.js"></script>
+</head>
+
+<body>
+
+<div id="navigation">
+  <div class="row">
+    <div class="col-md-5">
+      <h1><a href="./index.html">ViewFinder</a></h1>
+    </div>
+    <div class="col-md-7">
+      <h3 id="Pinned"><a href="./pinned.html">PINNED</a></h3>
+      <h3 id="Portfolio"><a href="./portfolio.html">PORTFOLIO</a></h3>
+      <h3 id="Inspiration"><a href="./index.html">INSPIRATION</a></h3>
+      <h3 id="Search"><a href="./search.html">SEARCH</a></h3>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div id="content">
+      <h2>Photos</h2>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3" id="uploadphotos-col-1">
+          </div>
+          <div class="col-md-3" id="uploadphotos-col-2">
+          </div>
+          <div class="col-md-3" id="uploadphotos-col-3">
+          </div>
+          <div class="col-md-3" id="uploadphotos-col-4">
+          </div>
+        </div>
+      </div>
+      <button class = "btn" id = "save-button">Save</button>
+    </div>
+  </div>
+  
+</div> 
+
+</body>

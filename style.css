@@ -114,6 +114,13 @@ body {
 }
 
 #newAlbum {
+	border-radius: 6px;
+	width: 200px;
+	height: 200px;
+	margin: 20px;
+	display: block;
+	background-color: white;
+	padding: 3px;
 	box-shadow: 0 0 5px -1px rgba(0,0,0,0.2);
 	vertical-align:middle;
 	text-align:center;

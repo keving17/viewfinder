@@ -33,7 +33,6 @@ function loadAlbums(){
     var addNewAlbumName = "Add new album";
     var newAlbum = document.createElement('a');
     newAlbum.setAttribute('id', 'newAlbum');
-    newAlbum.setAttribute('class', 'album');
     newAlbum.setAttribute('href', './newalbum.html');
 
     var newAlbumName = document.createElement('div');
@@ -64,6 +63,10 @@ function loadAlbum(albumName){
 function loadNewAlbum(){
     
 }
+
+$(document).on('click', '.album', function(evt){
+    window.location.href = "./album.html";
+});
 
 $(document).ready(function() {
     loadAlbums();
