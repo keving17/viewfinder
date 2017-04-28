@@ -65,7 +65,7 @@ $(document).ready(function() {
 
 		leftDiv.appendChild(photo);
 
-		document.getElementById('content').appendChild(row);
+		document.getElementById('contentID').appendChild(row);
 		available.splice(random,1);
 	}
 

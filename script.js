@@ -79,20 +79,20 @@ $(document).on('click', '#inspiration .heart', function(evt)
 		photo.childNodes[1].style.filter = 'grayscale(0)';
 		// heart.setAttribuet('src', './images/heart.png');
 		// var column;
-		// var column1 = document.getElementById('fav-col-1');
-		// var column2 = document.getElementById('fav-col-2');
+		 var column1 = document.getElementById('fav-col-1');
+		 var column2 = document.getElementById('fav-col-2');
 		var row = document.getElementById('favorites');
 
-		// if (column1.childNodes.length == column2.childNodes.length) {
-		// 	column = column1;
-		// } else {
-		// 	column = column2;
-		// }
+		 if (column1.childNodes.length == column2.childNodes.length) {
+		 	column = column1;
+		 } else {
+		 	column = column2;
+		 }
 
 		photo.setAttribute('id', 'fav'+photo.id.substr(5,photo.id.length));
 
-		// column.appendChild(photo);
-		row.appendChild(photo);
+		 column.appendChild(photo);
+		//row.appendChild(photo);
 	} else {
 		heart.style.filter = 'grayscale(1.0)';
 		// heart.setAttribute('src', './images/unheart.png');
