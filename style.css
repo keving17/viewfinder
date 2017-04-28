@@ -266,6 +266,12 @@ body {
     outline: none;
 }
 
+.searchpintext {
+	color: blue;
+	top: -20px;
+	position: relative;
+}
+
 #mapimage {
   z-index: 1;
   margin-top: 20px;

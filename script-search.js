@@ -21,17 +21,60 @@ $(document).ready(function() {
 
 $(document).on('click', '.heart', function(evt)
 {
+	toastr.options = {
+	  "closeButton": false,
+	  "debug": false,
+	  "newestOnTop": false,
+	  "progressBar": false,
+	  "positionClass": "toast-bottom-right",
+	  "preventDuplicates": false,
+	  "onclick": null,
+	  "showDuration": "100",
+	  "hideDuration": "100",
+	  "timeOut": "2000",
+	  "extendedTimeOut": "100",
+	  "showEasing": "swing",
+	  "hideEasing": "linear",
+	  "showMethod": "fadeIn",
+	  "hideMethod": "fadeOut"
+	}
+
 	if (evt.target.style.filter == 'grayscale(1)') {
 		evt.target.style.filter = 'grayscale(0)';
+
+		toastr.success('Added ' + evt.target.getAttribute('title') + ' to Inspirations');
+
 	} else {
 		evt.target.style.filter = 'grayscale(1.0)';
+
+		toastr.success('Removed ' + evt.target.getAttribute('title') + ' from Inspirations');
 	}
 });
 
 $(document).on('click', '.searchpinimage', function(evt)
 {
+	toastr.options = {
+	  "closeButton": false,
+	  "debug": false,
+	  "newestOnTop": false,
+	  "progressBar": false,
+	  "positionClass": "toast-bottom-right",
+	  "preventDuplicates": false,
+	  "onclick": null,
+	  "showDuration": "100",
+	  "hideDuration": "100",
+	  "timeOut": "2000",
+	  "extendedTimeOut": "100",
+	  "showEasing": "swing",
+	  "hideEasing": "linear",
+	  "showMethod": "fadeIn",
+	  "hideMethod": "fadeOut"
+	}
+
 	if (evt.target.style.opacity == 0.25) {
 		evt.target.style.opacity = 1.0;
+
+		toastr.success('Added ' + evt.target.getAttribute('title') + ' Pin to Search Map');
 
 		// Show pin
 		var mapX = evt.target.getAttribute('mapx');
@@ -40,6 +83,7 @@ $(document).on('click', '.searchpinimage', function(evt)
 		var button = document.createElement('div');
 		button.setAttribute('id', 'pin-'+mapX+'-'+mapY);
 		button.setAttribute('class', 'pin-div');
+		button.setAttribute('location', evt.target.getAttribute('title'));
 		button.style.left = mapX-16 + 'px';
 		button.style.top = mapY-32 + 'px';
 
@@ -49,8 +93,17 @@ $(document).on('click', '.searchpinimage', function(evt)
 		pin.setAttribute('src', './pin.png');
 		button.appendChild(pin);
 		document.getElementById('mapcontainer').appendChild(button);
+
+		var pinText = document.createElement('label');
+		pinText.setAttribute('class', 'searchpintext');
+		pinText.setAttribute('id', 'text-pin-' + mapX + '-' + mapY);
+		pinText.innerHTML = evt.target.getAttribute('title');
+		pinText.style.visibility=  "hidden";
+		button.appendChild(pinText);
 	} else {
 		evt.target.style.opacity = 0.25;
+
+		toastr.success('Removed ' + evt.target.getAttribute('title') + ' Pin from Search Map');
 
 		// Hide pin
 		var mapX = evt.target.getAttribute('mapx');
@@ -69,6 +122,23 @@ $(document).on('click', '#searchgobutton', function(evt)
 $(document).on('click', '#searchphotoimg', function(evt)
 {
 	window.location.href = "./directions.html";
+});
+
+$(document).on('click', '.pin-div', function(evt)
+{
+	window.location.href = "./directions.html";
+});
+
+$(document).on('mouseenter', '.pin-div', function(evt)
+{
+	var pinText = document.getElementById('text-' + evt.currentTarget.getAttribute('id'));
+	pinText.style.visibility=  "visible";
+});
+
+$(document).on('mouseleave', '.pin-div', function(evt)
+{
+	var pinText = document.getElementById('text-' + evt.currentTarget.getAttribute('id'));
+	pinText.style.visibility=  "hidden";
 });
 
 $(document).on('keydown', function(evt)
@@ -119,6 +189,7 @@ function refreshImages()
 		heart.setAttribute('type', 'image');
 		heart.setAttribute('src', './images/heart.png');
 		heart.setAttribute('class', 'heart');
+		heart.setAttribute('title', available[random][0]);
 		button.appendChild(heart);
 		photo.appendChild(button);
 
@@ -152,12 +223,11 @@ function refreshImages()
 		title.innerHTML = available[random][0];
 		titleHolder.appendChild(title)
 
-		available.splice(random,1);
-
 		var pin = document.createElement('input');
 		pin.setAttribute('type', 'image');
 		pin.setAttribute('src', './pin.png');
 		pin.setAttribute('class', 'searchpinimage');
+		pin.setAttribute('title', available[random][0]);
 		pin.style.filter = 'contrast(100%)'
 	  var map = document.getElementById('mapimage');
 		var mapWidth = map.clientWidth;
@@ -178,6 +248,8 @@ function refreshImages()
 			var column = document.getElementById('search-col-2');
 			column.appendChild(photoDiv);
 		}
+
+		available.splice(random,1);
 	}
 
 	var hearts = document.getElementsByClassName('heart');
