@@ -41,6 +41,12 @@ body {
 	font-weight: 300;
 }
 
+.help-text {
+	font-size: x-small;
+	font-style: italic;
+	color: #ccc;
+}
+
 .content.col-md-6 {
 	flex: 0 0 45%;
 }
@@ -59,6 +65,7 @@ body {
 	display: block;
 	padding: 10px 0;
 	margin: 0;
+	font-size: 24px;
 }
 
 .index {
@@ -216,10 +223,29 @@ body {
   text-align: left;
 }
 
+#searchform .col-md-11, #searchform .col-md-1 {
+	padding: 0;
+}
+
 #searchgobutton {
- margin-top: 3px;
- font-weight: bold;
- color: blue;
+	font-weight: bold;
+	color: white;
+	background-color: rgba(25, 25, 25, 1);
+	max-height: 100%;
+	margin: 0;
+	border-bottom-left-radius: 0;
+	border-top-left-radius: 0;
+	padding: 10px;
+}
+
+#searchform .bootstrap-tagsinput {
+	width: 100%;
+/*	border-top-right-radius: 0;
+	border-bottom-right-radius: 0;*/
+}
+
+#searchform .bootstrap-tagsinput input {
+	height: 100%;
 }
 
 .searchtitleholder {
@@ -243,6 +269,7 @@ body {
 #mapimage {
   z-index: 1;
   margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 #mapcontainer {

@@ -12,6 +12,11 @@ $(document).ready(function() {
 	map.setAttribute('width', '100%');
 	map.setAttribute('class', 'map');
 	document.getElementById('mapcontainer').appendChild(map);
+
+	window.setTimeout(function() {
+		$(".bootstrap-tagsinput input").get(0).focus();
+		//console.log($(".bootstrap-tagsinput input").get(0))
+	}, 500);
 });
 
 $(document).on('click', '.heart', function(evt)

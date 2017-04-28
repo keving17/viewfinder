@@ -48,12 +48,13 @@
         <!--<div id="searchheader">Search:</div>-->
         <form id="searchform" method="get">
           <div>
-              <div class="col-md-1">
-                <button type="button" id="searchgobutton">GO</button>
+              <div class="col-md-12">
+                <input type="text" class="searchinput" id="searchinput" data-role="tagsinput" name="search" placeholder="Search">
+                <p class="help-text">Search using tags to find locations. Press Enter to add tag.</p>
               </div>
-              <div class="col-md-11">
-                <input type="text" class="searchinput" id="searchinput" data-role="tagsinput" tabindex="-1" name="search">
-              </div>
+<!--               <div class="col-md-1">
+                <button type="button" id="searchgobutton" class="btn btn-small">GO</button>
+              </div> -->
           </div>
         </form>
         <div class="col-md-6" id="search-col-1">
