@@ -117,6 +117,7 @@ body {
 	overflow: auto;
 	width: 1080px;
 }
+/*Albums Style*/
 
 #newAlbum {
 	border-radius: 6px;
@@ -143,7 +144,36 @@ body {
 	display: block;
 	background-color: white;
 	padding: 3px;
+	cursor: pointer;
 }
+
+.new-album {
+	border-radius: 6px;
+	width: 200px;
+	height: 200px;
+	margin: 20px;
+	display: block;
+	background-color: white;
+	padding: 3px;
+	cursor: pointer;
+}
+
+.album-text{
+    display: block;
+	text-align:center;
+    vertical-align: center;
+    margin: auto;
+}
+
+.upload {/*for the upload new album icon*/
+	position: absolute;
+	z-index: 50;
+	width: 15%;
+	height: 15%;
+	top: 50%;
+	left: 50%;
+}
+/*End Albums Style*/
 
 .btn {
 	background-color: rgba(239, 100, 97, 1);
