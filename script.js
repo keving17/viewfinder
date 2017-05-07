@@ -1,4 +1,3 @@
-// var FILTERS = ['grass', 'water', 'building', 'sculpture'];
 var SOURCES = ['alchemist', 'dome', 'dome2', 'kresge', 'redsculpture', 'river', 'simmons', 'stata', 'stata2', 'stata3'];
 var NUM_PHOTOS = 8
 var row_num = 1;
@@ -44,7 +43,7 @@ $(document).on('click', '#inspiration .heart', function(evt)
 		photo = evt.target.parentElement.cloneNode(true);
 		photo.setAttribute('id', 'fav'+photo.id.substr(5,photo.id.length));
 		row.appendChild(photo);
-		
+
 	} else {
 		heart.setAttribute('src', './images/whiteheart.png');
 		heart.className = 'heart unheart';
@@ -68,6 +67,6 @@ $(document).on('click', '#favorites .heart', function(evt)
 	heart.className = 'heart unheart';
 
 	$('#'+photo.id).fadeOut(500,function(){
-  			this.remove();
+  		this.remove();
   	});
 });

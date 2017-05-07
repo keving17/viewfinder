@@ -39,15 +39,23 @@ $(document).on('click', '.heart', function(evt)
 	  "hideMethod": "fadeOut"
 	}
 
-	if (evt.target.style.filter == 'grayscale(1)') {
-		evt.target.style.filter = 'grayscale(0)';
+	var heart = evt.target;
+	if (heart.className == 'heart unheart') {
+		heart.setAttribute('src', './images/heart.png');
+		heart.className = 'heart faved';
 
 		toastr.success('Added ' + evt.target.getAttribute('title') + ' to Inspirations');
 
 	} else {
-		evt.target.style.filter = 'grayscale(1.0)';
+		heart.setAttribute('src', './images/whiteheart.png');
+		heart.className = 'heart unheart';
 
-		toastr.success('Removed ' + evt.target.getAttribute('title') + ' from Inspirations');
+		var fav = document.getElementById('fav'+photo.id.substr(5,photo.id.length));
+		$('#'+fav.id).fadeOut(500,function(){
+  			this.remove();
+  		});
+
+  		toastr.success('Removed ' + evt.target.getAttribute('title') + ' from Inspirations');
 	}
 });
 
@@ -187,8 +195,8 @@ function refreshImages()
 
 		var heart = document.createElement('input');
 		heart.setAttribute('type', 'image');
-		heart.setAttribute('src', './images/heart.png');
-		heart.setAttribute('class', 'heart');
+		heart.setAttribute('src', './images/whiteheart.png');
+		heart.setAttribute('class', 'heart unheart');
 		heart.setAttribute('title', available[random][0]);
 		button.appendChild(heart);
 		photo.appendChild(button);
@@ -252,11 +260,11 @@ function refreshImages()
 		available.splice(random,1);
 	}
 
-	var hearts = document.getElementsByClassName('heart');
-	for (h=0; h<hearts.length; h++) {
-		var heart = hearts[h];
-		heart.style.filter = 'grayscale(1.0)';
-	}
+	// var hearts = document.getElementsByClassName('heart');
+	// for (h=0; h<hearts.length; h++) {
+	// 	var heart = hearts[h];
+	// 	heart.style.filter = 'grayscale(1.0)';
+	// }
 
 	var pins = document.getElementsByClassName('searchpinimage');
 	for (p=0; p<pins.length; p++) {
