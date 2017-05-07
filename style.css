@@ -346,6 +346,6 @@ body {
 	text-align: left;
 }
 
-#pinnedpage.pinimage {
+.pin.pinimage {
 	float: left;
 }

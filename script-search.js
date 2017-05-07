@@ -19,37 +19,7 @@ $(document).ready(function() {
 	}, 500);
 });
 
-$(document).on('click', '.heart', function(evt)
-{
-	toastr.options = {
-	  "closeButton": false,
-	  "debug": false,
-	  "newestOnTop": false,
-	  "progressBar": false,
-	  "positionClass": "toast-bottom-right",
-	  "preventDuplicates": false,
-	  "onclick": null,
-	  "showDuration": "100",
-	  "hideDuration": "100",
-	  "timeOut": "2000",
-	  "extendedTimeOut": "100",
-	  "showEasing": "swing",
-	  "hideEasing": "linear",
-	  "showMethod": "fadeIn",
-	  "hideMethod": "fadeOut"
-	}
 
-	if (evt.target.style.filter == 'grayscale(1)') {
-		evt.target.style.filter = 'grayscale(0)';
-
-		toastr.success('Added ' + evt.target.getAttribute('title') + ' to Inspirations');
-
-	} else {
-		evt.target.style.filter = 'grayscale(1.0)';
-
-		toastr.success('Removed ' + evt.target.getAttribute('title') + ' from Inspirations');
-	}
-});
 
 $(document).on('click', '.searchpinimage', function(evt)
 {

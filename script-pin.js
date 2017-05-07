@@ -37,6 +37,7 @@ $(document).ready(function() {
 		heart.setAttribute('type', 'image');
 		heart.setAttribute('src', './images/heart.png');
 		heart.setAttribute('class', 'heart');
+		heart.setAttribute('title', available[random][0]);
 		photo.appendChild(heart);
 
 		var titleHolder = document.createElement('div');
@@ -52,9 +53,10 @@ $(document).ready(function() {
 		var pin = document.createElement('input');
 		pin.setAttribute('type', 'image');
 		pin.setAttribute('src', './pin.png');
-		pin.setAttribute('class', 'pinimage');
+		pin.setAttribute('class', 'pinimage pin');
 		pin.style.filter = 'contrast(100%)';
-		pin.setAttribute('id', 'pinnedpage');
+		pin.setAttribute('title', available[random][0]);
+		pin.setAttribute('id', 'pinnedpage'+p);
 		title.appendChild(pin);
 
 
@@ -77,6 +79,11 @@ $(document).ready(function() {
 
 });
 
+function undoUnpin(name) {
+	console.log(name.id)
+	$('#'+name.id).data('delete',false);
+}
+
 $(document).on('click', '.heart', function(evt)
 {
 	var photo = evt.target.parentElement.parentElement.cloneNode(true);
@@ -93,16 +100,49 @@ $(document).on('click', '.heart', function(evt)
 
 $(document).on('click', '.pinimage', function(evt)
 {
+	toastr.options = {
+	  "closeButton": false,
+	  "debug": false,
+	  "newestOnTop": false,
+	  "progressBar": false,
+	  "positionClass": "toast-bottom-right",
+	  "preventDuplicates": false,
+	  "onclick": null,
+	  "showDuration": "100",
+	  "hideDuration": "100",
+	  "timeOut": "2000",
+	  "extendedTimeOut": "100",
+	  "showEasing": "swing",
+	  "hideEasing": "linear",
+	  "showMethod": "fadeIn",
+	  "hideMethod": "fadeOut"
+	}
+
+	$(evt.target).data('delete',true);
+
 	var photo = evt.target.parentElement.parentElement.cloneNode(true);
 	var heart = photo.childNodes[0].childNodes[0];
 
 	if (evt.target.style.filter == 'contrast(100%)') {
 		evt.target.style.filter = 'contrast(0%)';
+		console.log(evt.target.id)
+
+		//toastr.success('Removed ' + evt.target.getAttribute('title') + ' Pin.' );
+		toastr.success('<div>Removed '+evt.target.getAttribute('title')+ ' Pin. <a href="javascript:undoUnpin('+ evt.target.id+ ')">Click here to undo!</a></div>')
 		var selection = evt.target.parentElement.parentElement.parentElement.parentElement;
-		$('#'+selection.id).fadeOut(500,function(){
-  			this.remove();
+		$('#'+selection.id).fadeOut(2500,function(){
+  			if ($(evt.target).data('delete')) {
+  				this.remove();
+  			}
+  			else{
+  				console.log(selection.id)
+  				evt.target.style.filter = 'contrast(100%)';
+  				$('#'+selection.id).fadeIn(1)
+
+  			}
   		});
 	} else {
 		evt.target.style.filter = 'contrast(100%)';
+		toastr.success('Added ' + evt.target.getAttribute('title') + ' Pin');
 	}
 });
