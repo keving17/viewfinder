@@ -85,39 +85,22 @@ $(document).on('click', '.pinimage', function(evt)
 
 		toastr.success('Added ' + evt.target.getAttribute('title') + ' to Pinned');
 
-		// // Show pin
+		// Show pin
 		var mapX = evt.target.getAttribute('mapx');
 		var mapY = evt.target.getAttribute('mapy');
 
-		var button = document.createElement('div');
-		button.setAttribute('id', 'realpin-'+mapX+'-'+mapY);
-		button.setAttribute('class', 'pin-div');
-		button.setAttribute('location', evt.target.getAttribute('title'));
-		button.style.left = mapX-16 + 'px';
-		button.style.top = mapY-32 + 'px';
-
-		var pin = document.createElement('input');
-		pin.setAttribute('class', 'mappin');
-		pin.setAttribute('type', 'image');
+		var pin = document.getElementById('realpinimg-'+mapX+'-'+mapY);
 		pin.setAttribute('src', './pin.png');
-		button.appendChild(pin);
-		document.getElementById('mapcontainer').appendChild(button);
-
-		var pinText = document.createElement('label');
-		pinText.setAttribute('class', 'searchpintext');
-		pinText.setAttribute('id', 'text-pin-' + mapX + '-' + mapY);
-		pinText.innerHTML = evt.target.getAttribute('title');
-		pinText.style.visibility=  "hidden";
-		button.appendChild(pinText);
 	} else {
 		evt.target.setAttribute('class', 'pinimage unpinned');
 		toastr.success('Removed ' + evt.target.getAttribute('title') + ' Pin');
-		// // Hide pin
+
+		// Hide pin
 		var mapX = evt.target.getAttribute('mapx');
 		var mapY = evt.target.getAttribute('mapy');
 
-		var button = document.getElementById('realpin-'+mapX+'-'+mapY);
-		document.getElementById('mapcontainer').removeChild(button);
+		var pin = document.getElementById('realpinimg-'+mapX+'-'+mapY);
+		pin.setAttribute('src', './images/mappin.png');
 	}
 });
 
@@ -135,6 +118,19 @@ $(document).on('click', '#searchgobutton', function(evt)
 // {
 // 	window.location.href = "./directions.html";
 // });
+
+$(document).on('click', function(evt)
+{
+	setTimeout(function(){
+		var FILTERS = $(".searchinput").tagsinput('items');
+		var length = FILTERS.length;
+
+		if (currentNumFilters != length) {
+			currentNumFilters = length;
+	  	refreshImages();
+		}
+  }, 1);
+});
 
 $(document).on('mouseenter', '.pin-div', function(evt)
 {
@@ -170,6 +166,18 @@ function refreshImages()
 	column1.innerHTML = '';
 	var column2 = document.getElementById('search-col-2');
 	column2.innerHTML = '';
+
+	// Remove pins.
+	var pins = document.getElementsByClassName('pin-div');
+	var pinsToRemove = [];
+	for (p=0; p<pins.length; p++) {
+		var pin = pins[p];
+		pinsToRemove.push(pin);
+	}
+	for (p=0; p<pinsToRemove.length; p++) {
+		var pin = pinsToRemove[p];
+		document.getElementById('mapcontainer').removeChild(pin);
+	}
 
 	var FILTERS = $(".searchinput").tagsinput('items');
 	if (FILTERS.length == 0) {
@@ -224,12 +232,12 @@ function refreshImages()
 		pin.setAttribute('class', 'pinimage unpinned');
 		pin.setAttribute('title', available[random][0]);
 		//pin.style.filter = 'contrast(100%)'
-	  	
-	  	var map = document.getElementById('mapimage');
+
+	  var map = document.getElementById('mapimage');
 		var mapWidth = map.clientWidth;
 		var mapHeight = map.clientHeight;
-		var randomX = Math.floor(Math.random()*mapWidth)-16;
-		var randomY = Math.floor(Math.random()*mapHeight)-32;
+		var randomX = 64 + Math.floor(Math.random()*(mapWidth - 128))-16;
+		var randomY = 64 + Math.floor(Math.random()*(mapHeight - 128))-32;
 		pin.setAttribute('mapX', randomX);
 		pin.setAttribute('mapY', randomY);
 		titleHolder.appendChild(pin);
@@ -240,15 +248,16 @@ function refreshImages()
 		title.innerHTML = available[random][0];
 		titleHolder.appendChild(title)
 
-		// Show pin
+		// Create pin
 		var button = document.createElement('div');
-		button.setAttribute('id', 'pin-'+randomX+'-'+randomY);
+		button.setAttribute('id', 'realpin-'+randomX+'-'+randomY);
 		button.setAttribute('class', 'pin-div');
 		button.setAttribute('location', title.innerHTML);
 		button.style.left = randomX + 'px';
 		button.style.top = randomY + 'px';
 
 		var pin = document.createElement('input');
+		pin.setAttribute('id', 'realpinimg-'+randomX+'-'+randomY);
 		pin.setAttribute('class', 'mappin');
 		pin.setAttribute('type', 'image');
 		pin.setAttribute('src', './images/mappin.png');
@@ -256,12 +265,11 @@ function refreshImages()
 		document.getElementById('mapcontainer').appendChild(button);
 
 		var pinText = document.createElement('label');
-		pinText.setAttribute('class', 'pintext');
-		pinText.setAttribute('id', 'text-pin-' + randomX + '-' + randomY);
+		pinText.setAttribute('class', 'searchpintext');
+		pinText.setAttribute('id', 'text-realpin-' + randomX + '-' + randomY);
 		pinText.innerHTML = title.innerHTML;
 		pinText.style.visibility=  "hidden";
 		button.appendChild(pinText);
-
 
 		photoDiv.appendChild(photo);
 		photoDiv.appendChild(titleHolder);
