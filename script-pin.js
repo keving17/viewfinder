@@ -35,8 +35,8 @@ $(document).ready(function() {
 
 		var heart = document.createElement('input');
 		heart.setAttribute('type', 'image');
-		heart.setAttribute('src', './images/heart.png');
-		heart.setAttribute('class', 'heart');
+		heart.setAttribute('src', './images/whiteheart.png');
+		heart.setAttribute('class', 'heart unheart');
 		heart.setAttribute('title', available[random][0]);
 		photo.appendChild(heart);
 
@@ -71,12 +71,6 @@ $(document).ready(function() {
 		available.splice(random,1);
 	}
 
-	var hearts = document.getElementsByClassName('heart');
-	for (h=0; h<hearts.length; h++) {
-		var heart = hearts[h];
-		heart.style.filter = 'grayscale(1.0)';
-	}
-
 });
 
 function undoUnpin(name) {
@@ -87,14 +81,19 @@ function undoUnpin(name) {
 $(document).on('click', '.heart', function(evt)
 {
 	var photo = evt.target.parentElement.parentElement.cloneNode(true);
-	var heart = photo.childNodes[0].childNodes[0];
-	console.log('here')
+	var heart = evt.target;
 
-	if (evt.target.style.filter == 'grayscale(0)') {
-		evt.target.style.filter = 'grayscale(1.0)';
+	if (heart.className == 'heart unheart') {
+		heart.setAttribute('src', './images/heart.png');
+		heart.className = 'heart faved';
+
+		toastr.success('Added ' + evt.target.getAttribute('title') + ' to Inspirations');
 
 	} else {
-		evt.target.style.filter = 'grayscale(0)';
+		heart.setAttribute('src', './images/whiteheart.png');
+		heart.className = 'heart unheart';
+
+  		toastr.success('Removed ' + evt.target.getAttribute('title') + ' from Inspirations');
 	}
 });
 
