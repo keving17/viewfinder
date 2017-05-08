@@ -133,13 +133,19 @@ body {
 #inspiration {
 	overflow: auto;
 	height: 520px;
+	width: 500px;
 	margin: 0;
+	display: inline-block;
 }
 
 #favorites {
 	overflow: auto;
 	height: 520px;
 	margin: 0;
+}
+
+#favorites .photo {
+	float: left;
 }
 
 #pinned {
@@ -221,7 +227,7 @@ body {
 	width: 200px;
 	height: 200px;
 	margin: 20px;
-	display: block;
+	display: inline-block;
 	padding: 3px;
 	position: relative;
 }
