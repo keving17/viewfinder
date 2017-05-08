@@ -28,6 +28,7 @@ $(document).ready(function() {
 		photo.setAttribute('class', 'photo');
 
 		var img = document.createElement('img');
+		img.setAttribute('class','directionsRedirect');
 		img.setAttribute('src', src);
 		img.setAttribute('width', '200px');
 		img.setAttribute('height', '200px');
@@ -42,7 +43,7 @@ $(document).ready(function() {
 
 		var titleHolder = document.createElement('div');
 		var title = document.createElement('h4');
-		title.setAttribute('class','title');
+		title.setAttribute('class','title directionsRedirect');
 		title.innerHTML = available[random][0];
 		var address = document.createElement('div');
 		address.innerHTML = available[random][1];
@@ -57,7 +58,7 @@ $(document).ready(function() {
 		pin.style.filter = 'contrast(100%)';
 		pin.setAttribute('title', available[random][0]);
 		pin.setAttribute('id', 'pinnedpage'+p);
-		title.appendChild(pin);
+		titleHolder.appendChild(pin);
 
 
 		rightDiv.appendChild(titleHolder);
@@ -131,7 +132,7 @@ $(document).on('click', '.pinimage', function(evt)
 
 		//toastr.success('Removed ' + evt.target.getAttribute('title') + ' Pin.' );
 		toastr.success('<div>Removed '+evt.target.getAttribute('title')+ ' Pin. <a href="javascript:undoUnpin('+ evt.target.id+ ')">Click here to undo!</a></div>')
-		var selection = evt.target.parentElement.parentElement.parentElement.parentElement;
+		var selection = evt.target.parentElement.parentElement.parentElement;
 		$(selection).css('pointer-events','none');
 		$('#'+selection.id).fadeOut(3000,function(){
   			if ($(evt.target).data('delete')) {
@@ -150,4 +151,9 @@ $(document).on('click', '.pinimage', function(evt)
 		toastr.success('Added ' + evt.target.getAttribute('title') + ' Pin');
 		$(selection).css('pointer-events','auto');
 	}
+});
+
+$(document).on('click', '.directionsRedirect', function(evt)
+{
+	window.location.href = "./directions.html";
 });
