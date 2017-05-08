@@ -11,6 +11,10 @@ body {
 	background-color: rgba(232, 233, 235, 1);
 }
 
+#contentID {
+	width: 100%;
+}
+
 #navigation {
 	padding: 15px 0;
 	background-color: rgba(228, 179, 99, 1);
@@ -78,6 +82,7 @@ body {
 .row {
 	text-align: center;
 	margin: 0 15px;
+	min-width: 900px
 }
 
 .row.pin{

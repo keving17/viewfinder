@@ -117,6 +117,9 @@ $(document).on('click', '.pinimage', function(evt)
 	  "hideMethod": "fadeOut"
 	}
 
+	console.log(evt)
+	//$(evt.target).css('pointer-events','none');
+
 	$(evt.target).data('delete',true);
 
 	var photo = evt.target.parentElement.parentElement.cloneNode(true);
@@ -129,7 +132,8 @@ $(document).on('click', '.pinimage', function(evt)
 		//toastr.success('Removed ' + evt.target.getAttribute('title') + ' Pin.' );
 		toastr.success('<div>Removed '+evt.target.getAttribute('title')+ ' Pin. <a href="javascript:undoUnpin('+ evt.target.id+ ')">Click here to undo!</a></div>')
 		var selection = evt.target.parentElement.parentElement.parentElement.parentElement;
-		$('#'+selection.id).fadeOut(2500,function(){
+		$(selection).css('pointer-events','none');
+		$('#'+selection.id).fadeOut(3000,function(){
   			if ($(evt.target).data('delete')) {
   				this.remove();
   			}
@@ -137,11 +141,13 @@ $(document).on('click', '.pinimage', function(evt)
   				console.log(selection.id)
   				evt.target.style.filter = 'contrast(100%)';
   				$('#'+selection.id).fadeIn(1)
+  				$(selection).css('pointer-events','auto');
 
   			}
   		});
 	} else {
 		evt.target.style.filter = 'contrast(100%)';
 		toastr.success('Added ' + evt.target.getAttribute('title') + ' Pin');
+		$(selection).css('pointer-events','auto');
 	}
 });
