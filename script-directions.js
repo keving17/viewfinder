@@ -32,7 +32,7 @@ $(document).ready(function() {
 
     var pin = document.createElement('input');
     pin.setAttribute('id', 'realpinimg-'+randomX+'-'+randomY);
-    pin.setAttribute('class', 'mappin');
+    pin.setAttribute('class', 'staticmap');
     pin.setAttribute('type', 'image');
     pin.setAttribute('src', './images/mappin.png');
     button.appendChild(pin);

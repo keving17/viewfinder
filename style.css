@@ -440,6 +440,14 @@ body {
 	margin-top: 20px;
 }
 
+.staticmap {
+	cursor: default;
+	position:absolute;
+	z-index:200;
+	height: 32px;
+	width: 32px;
+}
+
 .mappin{
   position:absolute;
   z-index:200;
