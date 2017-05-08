@@ -3,6 +3,8 @@ var SOURCES_LOC = [['Alchemist', '84 Massachusetts Ave, MIT Stratton Student Cen
 var MIN_NUM_PHOTOS = 2
 var NUM_MAPS = 3
 
+var currentNumFilters = 0;
+
 $(document).ready(function() {
 	var random = Math.floor(Math.random()*NUM_MAPS) + 1;
 
@@ -12,6 +14,8 @@ $(document).ready(function() {
 	map.setAttribute('width', '100%');
 	map.setAttribute('class', 'map');
 	document.getElementById('mapcontainer').appendChild(map);
+
+	currentNumFilters = 0;
 
 	window.setTimeout(function() {
 		$(".bootstrap-tagsinput input").get(0).focus();
@@ -146,9 +150,16 @@ $(document).on('mouseleave', '.pin-div', function(evt)
 
 $(document).on('keydown', function(evt)
 {
-  if (evt.keyCode == 13/*enter*/) {
+  if (evt.keyCode == 13/*enter*/ ||
+  	  evt.keyCode == 8/*delete*/) {
   	setTimeout(function(){
-	  	refreshImages();
+			var FILTERS = $(".searchinput").tagsinput('items');
+			var length = FILTERS.length;
+
+			if (currentNumFilters != length) {
+				currentNumFilters = length;
+		  	refreshImages();
+			}
     }, 1);
   }
 });
