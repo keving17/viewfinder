@@ -209,7 +209,7 @@ function refreshImages()
 		titleHolder.setAttribute('id', 'titleHolder');
 		var pin = document.createElement('input');
 		pin.setAttribute('type', 'image');
-		pin.setAttribute('src', './pin.png');
+		pin.setAttribute('src', './images/mappin.png');
 		pin.setAttribute('class', 'pinimage unpinned');
 		pin.setAttribute('title', available[random][0]);
 		//pin.style.filter = 'contrast(100%)'
@@ -240,7 +240,7 @@ function refreshImages()
 		var pin = document.createElement('input');
 		pin.setAttribute('class', 'mappin');
 		pin.setAttribute('type', 'image');
-		pin.setAttribute('src', './pin.png');
+		pin.setAttribute('src', './images/mappin.png');
 		button.appendChild(pin);
 		document.getElementById('mapcontainer').appendChild(button);
 
