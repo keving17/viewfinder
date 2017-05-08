@@ -298,18 +298,11 @@ body {
 	margin: 0;
 }
 
-/*.heart {
-	float: right;
-	width: 20px;
-	height: 20px;
-}*/
-
 .heart:focus, textarea:focus {
     outline: none;
 }
 
 .pinimage {
-	/*float: left;*/
 	width: 20px;
 	height: 20px;
 	margin-top: 3px;
@@ -335,7 +328,7 @@ body {
 }
 
 .pinimage.unpinned:hover{
-	filter: contrast(0%) drop-shadow(0px 0px 3px gray);
+	filter: contrast(100%) drop-shadow(0px 0px 3px gray);
 	width: 24px;
 	height: 24px;
 	margin-top: 0px;
@@ -345,6 +338,7 @@ body {
 .pinimage:focus, textarea:focus {
     outline: none;
 }
+
 .filters {
 	margin-top: 23px;
 	text-align: center;
