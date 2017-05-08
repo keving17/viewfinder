@@ -14,9 +14,11 @@ $(document).ready(function() {
 	document.getElementById('mapcontainer').appendChild(map);
 
 	window.setTimeout(function() {
-		$(".bootstrap-tagsinput input").get(0).focus();
+		// $(".bootstrap-tagsinput input").get(0).focus();
 		//console.log($(".bootstrap-tagsinput input").get(0))
 	}, 500);
+
+	// document.getElementsByClassName('searchinput')[0].focus();
 });
 
 $(document).on('click', '.heart', function(evt)
@@ -122,15 +124,15 @@ $(document).on('click', '#searchgobutton', function(evt)
 	refreshImages();
 });
 
-$(document).on('click', '#searchphotoimg', function(evt)
-{
-	window.location.href = "./directions.html";
-});
+// $(document).on('click', '#searchphotoimg', function(evt)
+// {
+// 	window.location.href = "./directions.html";
+// });
 
-$(document).on('click', '.pin-div', function(evt)
-{
-	window.location.href = "./directions.html";
-});
+// $(document).on('click', '.pin-div', function(evt)
+// {
+// 	window.location.href = "./directions.html";
+// });
 
 $(document).on('mouseenter', '.pin-div', function(evt)
 {
@@ -180,6 +182,7 @@ function refreshImages()
 
 		var img = document.createElement('img');
 		img.setAttribute('id', 'searchphotoimg');
+		img.setAttribute('class', 'directionsRedirect');
 		img.setAttribute('src', src);
 		img.setAttribute('width', '200px');
 		img.setAttribute('height', '200px');
@@ -201,45 +204,31 @@ function refreshImages()
 		pic.setAttribute('class', 'pic');
 		photo.appendChild(pic);
 
-		/*
-		var filtersList = document.createElement('div');
-		filtersList.setAttribute('class', 'filters');
-		filtersList.setAttribute('display', 'block');
-		filtersList.setAttribute('text-align', 'center');
-		filtersList.setAttribute('vertical-align', 'center');
-		filtersList.setAttribute('margin', 'auto');
-		for (f=0; f<filters.length; f++) {
-			var filter = document.createElement('div');
-			filter.innerHTML = filters[f];
-			filtersList.appendChild(filter);
-		}
-		pic.appendChild(filtersList);
-		*/
-
 		var div = document.createElement('div');
 		photo.appendChild(div);
 
 		var titleHolder = document.createElement('div');
-		var title = document.createElement('h4');
-		titleHolder.setAttribute('class','searchtitleholder')
-		title.setAttribute('class','title');
-		title.innerHTML = available[random][0];
-		titleHolder.appendChild(title)
-
 		var pin = document.createElement('input');
 		pin.setAttribute('type', 'image');
 		pin.setAttribute('src', './pin.png');
 		pin.setAttribute('class', 'searchpinimage');
 		pin.setAttribute('title', available[random][0]);
 		pin.style.filter = 'contrast(100%)'
-	  var map = document.getElementById('mapimage');
+	  	var map = document.getElementById('mapimage');
 		var mapWidth = map.clientWidth;
 		var mapHeight = map.clientHeight;
 		var randomX = Math.floor(Math.random()*mapWidth);
 		var randomY = Math.floor(Math.random()*mapHeight);
 		pin.setAttribute('mapX', randomX);
 		pin.setAttribute('mapY', randomY);
-		title.appendChild(pin);
+		titleHolder.appendChild(pin);
+
+		var title = document.createElement('h4');
+		titleHolder.setAttribute('class','searchtitleholder')
+		title.setAttribute('class','title directionsRedirect');
+		title.innerHTML = available[random][0];
+		titleHolder.appendChild(title)
+
 
 		photoDiv.appendChild(photo);
 		photoDiv.appendChild(titleHolder);
@@ -255,15 +244,15 @@ function refreshImages()
 		available.splice(random,1);
 	}
 
-	// var hearts = document.getElementsByClassName('heart');
-	// for (h=0; h<hearts.length; h++) {
-	// 	var heart = hearts[h];
-	// 	heart.style.filter = 'grayscale(1.0)';
-	// }
-
 	var pins = document.getElementsByClassName('searchpinimage');
 	for (p=0; p<pins.length; p++) {
 		var pin = pins[p];
 		pin.style.opacity = 0.25;
 	}
 }
+
+$(document).on('click', '.directionsRedirect', function(evt)
+{
+	var placeName = evt.target.parentElement.parentElement.childNodes[1].childNodes[0].title;
+	window.location.href = "./directions.html?place="+placeName;
+});

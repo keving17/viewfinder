@@ -21,6 +21,10 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/typeahead.js/0.11.1/typeahead.bundle.min.js"></script>
 <script src="lib/bootstrap-tagsinput.min.js"></script>
+<script type="text/javascript" src="script-directions.js"></script>
+<script>
+  // var placeName = window.location.href[]
+</script>
 </head>
 
 <body>
@@ -40,14 +44,15 @@
 </div>
 
 <div class="container">
+<div class="content">
   <h2 class="index">Directions</h2>
   <div class="row">
     <div class="col-md-5">
       <div id="place">
           <h4 class="title" style="font-size: 30px">
-          <input type="image" src="./pin.png" class="pinimage" style="filter: contrast(100%);">
-          Stata Center
-        </h4>
+            <input type="image" src="./pin.png" class="pinimage" style="filter: contrast(100%);">
+            <span id="placeName"><span>
+          </h4>
       </div>
       <div id="directions">
         <ol>
@@ -64,6 +69,7 @@
         </div>
     </div>
   </div>
+</div>
 </div>
 
 </body>
