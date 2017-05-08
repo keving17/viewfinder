@@ -127,7 +127,8 @@ $(document).on('click', '#searchgobutton', function(evt)
 $(document).on('click', '.mappin', function(evt)
 {
 	var placeName = evt.target.getAttribute('location');
-	window.location.href = "./directions.html?place="+placeName;
+	link = "./directions.html?place="+placeName;
+	window.open(link, '_blank');
 });
 
 $(document).on('click', function(evt)
