@@ -3,6 +3,23 @@ var SOURCES_LOC = [['Alchemist', '84 Massachusetts Ave, MIT Stratton Student Cen
 var NUM_PHOTOS = 8;
 
 $(document).ready(function() {
+	toastr.options = {
+	  "closeButton": false,
+	  "debug": false,
+	  "newestOnTop": false,
+	  "progressBar": false,
+	  "positionClass": "toast-bottom-right",
+	  "preventDuplicates": false,
+	  "onclick": null,
+	  "showDuration": "100",
+	  "hideDuration": "100",
+	  "timeOut": "2000",
+	  "extendedTimeOut": "100",
+	  "showEasing": "swing",
+	  "hideEasing": "linear",
+	  "showMethod": "fadeIn",
+	  "hideMethod": "fadeOut"
+	}
 	var available = SOURCES_LOC.slice(0);
 	for (p=0; p<NUM_PHOTOS; p++) {
 
@@ -101,24 +118,6 @@ $(document).on('click', '.heart', function(evt)
 
 $(document).on('click', '.pinimage', function(evt)
 {
-	toastr.options = {
-	  "closeButton": false,
-	  "debug": false,
-	  "newestOnTop": false,
-	  "progressBar": false,
-	  "positionClass": "toast-bottom-right",
-	  "preventDuplicates": false,
-	  "onclick": null,
-	  "showDuration": "100",
-	  "hideDuration": "100",
-	  "timeOut": "2000",
-	  "extendedTimeOut": "100",
-	  "showEasing": "swing",
-	  "hideEasing": "linear",
-	  "showMethod": "fadeIn",
-	  "hideMethod": "fadeOut"
-	}
-
 	console.log(evt.target.getAttribute('class'))
 
 	console.log('pinimage',evt.target.getAttribute('class').indexOf('pinimage'))
