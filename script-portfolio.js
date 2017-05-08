@@ -39,7 +39,7 @@ function loadAlbums(){
     //for adding the new album button
 
     var addNewAlbumName = "Add new album";
-    
+
     var newAlbum = $("<button class = 'new-album'></button>");
     var newAlbumName = $('<div class=album-text></div>');
 
@@ -59,7 +59,7 @@ $(document).on('click', '.album', function(evt){
 });
 
 $(document).on('click', '.new-album', function(evt){
-    window.location.href = "./newalbum.html";
+    window.location.href = "./uploadphoto.html";
 })
 
 $(document).ready(function() {
