@@ -43,6 +43,10 @@ $(document).on('click', '#inspiration .heart', function(evt)
 		photo = evt.target.parentElement.cloneNode(true);
 		photo.setAttribute('id', 'fav'+photo.id.substr(5,photo.id.length));
 		row.appendChild(photo);
+		$('#'+photo.id).hide();
+		$('#'+photo.id).fadeIn(500,function(){
+			$('#'+photo.id).show();
+		});
 
 	} else {
 		heart.setAttribute('src', './images/whiteheart.png');
