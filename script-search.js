@@ -285,7 +285,7 @@ function refreshImages()
 
 		var pin = document.createElement('input');
 		pin.setAttribute('id', 'realpinimg-'+randomX+'-'+randomY);
-		pin.setAttribute('class', 'mappin');
+		pin.setAttribute('class', 'mappin directionsRedirect');
 		pin.setAttribute('type', 'image');
 		pin.setAttribute('src', './images/mappin.png');
 		pin.setAttribute('location', title.innerHTML);
