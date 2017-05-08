@@ -54,10 +54,11 @@ $(document).ready(function() {
 		var pin = document.createElement('input');
 		pin.setAttribute('type', 'image');
 		pin.setAttribute('src', './pin.png');
-		pin.setAttribute('class', 'pinimage pin');
-		pin.style.filter = 'contrast(100%)';
+		pin.setAttribute('class', 'pinimage pin pinned');
+		//pin.style.filter = 'contrast(100%)';
 		pin.setAttribute('title', available[random][0]);
 		pin.setAttribute('id', 'pinnedpage'+p);
+		//$('pinnedpage'+p).css('margin-right', '10px');
 		titleHolder.appendChild(pin);
 
 
@@ -118,7 +119,10 @@ $(document).on('click', '.pinimage', function(evt)
 	  "hideMethod": "fadeOut"
 	}
 
-	console.log(evt)
+	console.log(evt.target.getAttribute('class'))
+
+	console.log('pinimage',evt.target.getAttribute('class').indexOf('pinimage'))
+	console.log('pin',evt.target.getAttribute('class').indexOf('in'))
 	//$(evt.target).css('pointer-events','none');
 
 	$(evt.target).data('delete',true);
@@ -126,8 +130,8 @@ $(document).on('click', '.pinimage', function(evt)
 	var photo = evt.target.parentElement.parentElement.cloneNode(true);
 	var heart = photo.childNodes[0].childNodes[0];
 
-	if (evt.target.style.filter == 'contrast(100%)') {
-		evt.target.style.filter = 'contrast(0%)';
+	if (evt.target.getAttribute('class').indexOf('pinned')>=0) {
+		evt.target.setAttribute('class', 'pinimage pin unpinned');
 		console.log(evt.target.id)
 
 		//toastr.success('Removed ' + evt.target.getAttribute('title') + ' Pin.' );
@@ -140,14 +144,14 @@ $(document).on('click', '.pinimage', function(evt)
   			}
   			else{
   				console.log(selection.id)
-  				evt.target.style.filter = 'contrast(100%)';
+				evt.target.setAttribute('class', 'pinimage pin pinned');
   				$('#'+selection.id).fadeIn(1)
   				$(selection).css('pointer-events','auto');
 
   			}
   		});
 	} else {
-		evt.target.style.filter = 'contrast(100%)';
+		evt.target.setAttribute('class', 'pinimage pin pinned');
 		toastr.success('Added ' + evt.target.getAttribute('title') + ' Pin');
 		$(selection).css('pointer-events','auto');
 	}
