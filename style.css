@@ -73,6 +73,7 @@ body {
 	padding: 10px 0;
 	margin: 0;
 	font-size: 24px;
+	margin-bottom: 10px;
 }
 
 .index {
@@ -242,7 +243,7 @@ body {
 }
 
 .pinimage {
-/*	float: left;*/
+	/*float: left;*/
 	width: 20px;
 	height: 20px;
 	margin-top: 3px;
@@ -302,14 +303,19 @@ body {
 .searchtitleholder {
  margin-top: -8px;
  margin-bottom: 32px;
+ margin-left: 20px;
+}
+
+.searchtitleholder > h4 {
+	font-size: 20px;
 }
 
 .searchpinimage {
 	float: left;
 	width: 20px;
 	height: 20px;
-	margin-left: 20px;
-	margin-top: 0px;
+	/*margin-left: 20px;*/
+	margin-top: 3px;
 	margin-right: 3px;
 }
 
