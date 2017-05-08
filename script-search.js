@@ -79,43 +79,43 @@ $(document).on('click', '.searchpinimage', function(evt)
 	if (evt.target.style.opacity == 0.25) {
 		evt.target.style.opacity = 1.0;
 
-		toastr.success('Added ' + evt.target.getAttribute('title') + ' Pin to Search Map');
+		toastr.success('Added ' + evt.target.getAttribute('title') + ' to Pinned');
 
-		// Show pin
-		var mapX = evt.target.getAttribute('mapx');
-		var mapY = evt.target.getAttribute('mapy');
+		// // Show pin
+		// var mapX = evt.target.getAttribute('mapx');
+		// var mapY = evt.target.getAttribute('mapy');
 
-		var button = document.createElement('div');
-		button.setAttribute('id', 'pin-'+mapX+'-'+mapY);
-		button.setAttribute('class', 'pin-div');
-		button.setAttribute('location', evt.target.getAttribute('title'));
-		button.style.left = mapX-16 + 'px';
-		button.style.top = mapY-32 + 'px';
+		// var button = document.createElement('div');
+		// button.setAttribute('id', 'pin-'+mapX+'-'+mapY);
+		// button.setAttribute('class', 'pin-div');
+		// button.setAttribute('location', evt.target.getAttribute('title'));
+		// button.style.left = mapX-16 + 'px';
+		// button.style.top = mapY-32 + 'px';
 
-		var pin = document.createElement('input');
-		pin.setAttribute('class', 'mappin');
-		pin.setAttribute('type', 'image');
-		pin.setAttribute('src', './pin.png');
-		button.appendChild(pin);
-		document.getElementById('mapcontainer').appendChild(button);
+		// var pin = document.createElement('input');
+		// pin.setAttribute('class', 'mappin');
+		// pin.setAttribute('type', 'image');
+		// pin.setAttribute('src', './pin.png');
+		// button.appendChild(pin);
+		// document.getElementById('mapcontainer').appendChild(button);
 
-		var pinText = document.createElement('label');
-		pinText.setAttribute('class', 'searchpintext');
-		pinText.setAttribute('id', 'text-pin-' + mapX + '-' + mapY);
-		pinText.innerHTML = evt.target.getAttribute('title');
-		pinText.style.visibility=  "hidden";
-		button.appendChild(pinText);
+		// var pinText = document.createElement('label');
+		// pinText.setAttribute('class', 'searchpintext');
+		// pinText.setAttribute('id', 'text-pin-' + mapX + '-' + mapY);
+		// pinText.innerHTML = evt.target.getAttribute('title');
+		// pinText.style.visibility=  "hidden";
+		// button.appendChild(pinText);
 	} else {
 		evt.target.style.opacity = 0.25;
 
-		toastr.success('Removed ' + evt.target.getAttribute('title') + ' Pin from Search Map');
+		toastr.success('Removed ' + evt.target.getAttribute('title') + ' from Pinned');
 
-		// Hide pin
-		var mapX = evt.target.getAttribute('mapx');
-		var mapY = evt.target.getAttribute('mapy');
+		// // Hide pin
+		// var mapX = evt.target.getAttribute('mapx');
+		// var mapY = evt.target.getAttribute('mapy');
 
-		var button = document.getElementById('pin-'+mapX+'-'+mapY);
-		document.getElementById('mapcontainer').removeChild(button);
+		// var button = document.getElementById('pin-'+mapX+'-'+mapY);
+		// document.getElementById('mapcontainer').removeChild(button);
 	}
 });
 
@@ -208,17 +208,19 @@ function refreshImages()
 		photo.appendChild(div);
 
 		var titleHolder = document.createElement('div');
+		titleHolder.setAttribute('id', 'titleHolder');
 		var pin = document.createElement('input');
 		pin.setAttribute('type', 'image');
 		pin.setAttribute('src', './pin.png');
 		pin.setAttribute('class', 'searchpinimage');
 		pin.setAttribute('title', available[random][0]);
 		pin.style.filter = 'contrast(100%)'
+	  	
 	  	var map = document.getElementById('mapimage');
 		var mapWidth = map.clientWidth;
 		var mapHeight = map.clientHeight;
-		var randomX = Math.floor(Math.random()*mapWidth);
-		var randomY = Math.floor(Math.random()*mapHeight);
+		var randomX = Math.floor(Math.random()*mapWidth)-16;
+		var randomY = Math.floor(Math.random()*mapHeight)-32;
 		pin.setAttribute('mapX', randomX);
 		pin.setAttribute('mapY', randomY);
 		titleHolder.appendChild(pin);
@@ -228,6 +230,28 @@ function refreshImages()
 		title.setAttribute('class','title directionsRedirect');
 		title.innerHTML = available[random][0];
 		titleHolder.appendChild(title)
+
+		// Show pin
+		var button = document.createElement('div');
+		button.setAttribute('id', 'pin-'+randomX+'-'+randomY);
+		button.setAttribute('class', 'pin-div');
+		button.setAttribute('location', title.innerHTML);
+		button.style.left = randomX + 'px';
+		button.style.top = randomY + 'px';
+
+		var pin = document.createElement('input');
+		pin.setAttribute('class', 'mappin');
+		pin.setAttribute('type', 'image');
+		pin.setAttribute('src', './pin.png');
+		button.appendChild(pin);
+		document.getElementById('mapcontainer').appendChild(button);
+
+		var pinText = document.createElement('label');
+		pinText.setAttribute('class', 'searchpintext');
+		pinText.setAttribute('id', 'text-pin-' + randomX + '-' + randomY);
+		pinText.innerHTML = title.innerHTML;
+		pinText.style.visibility=  "hidden";
+		button.appendChild(pinText);
 
 
 		photoDiv.appendChild(photo);
