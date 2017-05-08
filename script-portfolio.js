@@ -39,11 +39,7 @@ function loadAlbums(){
     //for adding the new album button
 
     var addNewAlbumName = "Add new album";
-    /*
-    var newAlbum = document.createElement('a');
-    newAlbum.setAttribute('id', 'newAlbum');
-    newAlbum.setAttribute('href', './newalbum.html');
-    */
+    
     var newAlbum = $("<button class = 'new-album'></button>");
     var newAlbumName = $('<div class=album-text></div>');
 
