@@ -157,5 +157,7 @@ $(document).on('click', '.pinimage', function(evt)
 $(document).on('click', '.directionsRedirect', function(evt)
 {
 	var placeName = evt.target.parentElement.parentElement.parentElement.childNodes[1].childNodes[0].childNodes[0].title;
-	window.location.href = "./directions.html?place="+placeName;
+	// window.location.href = "./directions.html?place="+placeName;
+	var link = "./directions.html?place="+placeName;
+	window.open(link, '_blank');
 });
