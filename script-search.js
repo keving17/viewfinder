@@ -14,9 +14,9 @@ $(document).ready(function() {
 	document.getElementById('mapcontainer').appendChild(map);
 
 	window.setTimeout(function() {
-		// $(".bootstrap-tagsinput input").get(0).focus();
-		//console.log($(".bootstrap-tagsinput input").get(0))
-	}, 500);
+		$(".bootstrap-tagsinput input").get(0).focus();
+		console.log($(".bootstrap-tagsinput input").get(0))
+	}, 400);
 
 	// document.getElementsByClassName('searchinput')[0].focus();
 });
@@ -82,38 +82,38 @@ $(document).on('click', '.pinimage', function(evt)
 		toastr.success('Added ' + evt.target.getAttribute('title') + ' to Pinned');
 
 		// // Show pin
-		// var mapX = evt.target.getAttribute('mapx');
-		// var mapY = evt.target.getAttribute('mapy');
+		var mapX = evt.target.getAttribute('mapx');
+		var mapY = evt.target.getAttribute('mapy');
 
-		// var button = document.createElement('div');
-		// button.setAttribute('id', 'pin-'+mapX+'-'+mapY);
-		// button.setAttribute('class', 'pin-div');
-		// button.setAttribute('location', evt.target.getAttribute('title'));
-		// button.style.left = mapX-16 + 'px';
-		// button.style.top = mapY-32 + 'px';
+		var button = document.createElement('div');
+		button.setAttribute('id', 'realpin-'+mapX+'-'+mapY);
+		button.setAttribute('class', 'pin-div');
+		button.setAttribute('location', evt.target.getAttribute('title'));
+		button.style.left = mapX-16 + 'px';
+		button.style.top = mapY-32 + 'px';
 
-		// var pin = document.createElement('input');
-		// pin.setAttribute('class', 'mappin');
-		// pin.setAttribute('type', 'image');
-		// pin.setAttribute('src', './pin.png');
-		// button.appendChild(pin);
-		// document.getElementById('mapcontainer').appendChild(button);
+		var pin = document.createElement('input');
+		pin.setAttribute('class', 'mappin');
+		pin.setAttribute('type', 'image');
+		pin.setAttribute('src', './pin.png');
+		button.appendChild(pin);
+		document.getElementById('mapcontainer').appendChild(button);
 
-		// var pinText = document.createElement('label');
-		// pinText.setAttribute('class', 'searchpintext');
-		// pinText.setAttribute('id', 'text-pin-' + mapX + '-' + mapY);
-		// pinText.innerHTML = evt.target.getAttribute('title');
-		// pinText.style.visibility=  "hidden";
-		// button.appendChild(pinText);
+		var pinText = document.createElement('label');
+		pinText.setAttribute('class', 'searchpintext');
+		pinText.setAttribute('id', 'text-pin-' + mapX + '-' + mapY);
+		pinText.innerHTML = evt.target.getAttribute('title');
+		pinText.style.visibility=  "hidden";
+		button.appendChild(pinText);
 	} else {
 		evt.target.setAttribute('class', 'pinimage unpinned');
 		toastr.success('Removed ' + evt.target.getAttribute('title') + ' Pin');
 		// // Hide pin
-		// var mapX = evt.target.getAttribute('mapx');
-		// var mapY = evt.target.getAttribute('mapy');
+		var mapX = evt.target.getAttribute('mapx');
+		var mapY = evt.target.getAttribute('mapy');
 
-		// var button = document.getElementById('pin-'+mapX+'-'+mapY);
-		// document.getElementById('mapcontainer').removeChild(button);
+		var button = document.getElementById('realpin-'+mapX+'-'+mapY);
+		document.getElementById('mapcontainer').removeChild(button);
 	}
 });
 
@@ -209,7 +209,7 @@ function refreshImages()
 		titleHolder.setAttribute('id', 'titleHolder');
 		var pin = document.createElement('input');
 		pin.setAttribute('type', 'image');
-		pin.setAttribute('src', './images/mappin.png');
+		pin.setAttribute('src', './pin.png');
 		pin.setAttribute('class', 'pinimage unpinned');
 		pin.setAttribute('title', available[random][0]);
 		//pin.style.filter = 'contrast(100%)'
