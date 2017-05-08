@@ -142,6 +142,7 @@ body {
 	overflow: auto;
 	height: 520px;
 	margin: 0;
+	padding-left: 10px;
 }
 
 #favorites .photo {
