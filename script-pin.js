@@ -13,7 +13,7 @@ $(document).ready(function() {
 	  "onclick": null,
 	  "showDuration": "100",
 	  "hideDuration": "100",
-	  "timeOut": "2000",
+	  "timeOut": "3000",
 	  "extendedTimeOut": "100",
 	  "showEasing": "swing",
 	  "hideEasing": "linear",
@@ -29,7 +29,7 @@ $(document).ready(function() {
 
 		var leftDiv = document.createElement('div');
 		leftDiv.setAttribute('class','col-md-3 pin-col-photos');
-		
+
 		var rightDiv = document.createElement('div');
 		rightDiv.setAttribute('class','col-md-9 pin-col-photos description');
 
@@ -38,7 +38,7 @@ $(document).ready(function() {
 
 		var random = Math.floor(Math.random()*available.length);
 		var src = './images/'+available[random][2]+'.jpg';
-		
+
 
 		var photo = document.createElement('div');
 		photo.setAttribute('id', 'photo-'+p);
@@ -130,13 +130,13 @@ $(document).on('click', '.pinimage', function(evt)
 	var selection = evt.target.parentElement.parentElement.parentElement;
 
 	if (evt.target.getAttribute('class').indexOf('unpinned')>=0) {
-		evt.target.setAttribute('class', 'pinimage pin pinned');
-		console.log(evt.target.id)
-		toastr.success('Added ' + evt.target.getAttribute('title') + ' Pin');
+		//evt.target.setAttribute('class', 'pinimage pin pinned');
+		//console.log(evt.target.id)
+		//toastr.success('Added ' + evt.target.getAttribute('title') + ' Pin');
 
 	} else {
 		evt.target.setAttribute('class', 'pinimage pin unpinned');
-		toastr.success('<div>Removed '+evt.target.getAttribute('title')+ ' Pin. <a href="javascript:undoUnpin('+ evt.target.id+ ')">Click here to undo!</a></div>')
+		toastr.success('<div>Removed '+evt.target.getAttribute('title')+ ' Pin.</div><div><a href="javascript:undoUnpin('+ evt.target.id+ ')">Click here to undo!</a></div>')
 		$(selection).css('pointer-events','none');
 		$('#'+selection.id).fadeOut(3000,function(){
   			if ($(evt.target).data('delete')) {
