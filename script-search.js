@@ -16,6 +16,16 @@ $(document).ready(function() {
 	document.getElementById('mapcontainer').appendChild(map);
 
 	window.setTimeout(function() {
+		var FILTERS = $(".searchinput").tagsinput('items');
+		if (FILTERS) {
+			if (FILTERS.length > 0) {
+				currentNumFilters = FILTERS.length;
+				refreshImages();
+			}
+		}
+	}, 1);
+
+	window.setTimeout(function() {
 		if ($(".bootstrap-tagsinput input").length > 0) {
 			$(".bootstrap-tagsinput input").get(0).focus();
 			console.log($(".bootstrap-tagsinput input").get(0))
