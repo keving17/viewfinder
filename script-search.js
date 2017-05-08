@@ -15,11 +15,11 @@ $(document).ready(function() {
 	map.setAttribute('class', 'map');
 	document.getElementById('mapcontainer').appendChild(map);
 
-	currentNumFilters = 0;
-
 	window.setTimeout(function() {
-		$(".bootstrap-tagsinput input").get(0).focus();
-		console.log($(".bootstrap-tagsinput input").get(0))
+		if ($(".bootstrap-tagsinput input").length > 0) {
+			$(".bootstrap-tagsinput input").get(0).focus();
+			console.log($(".bootstrap-tagsinput input").get(0))
+		}
 	}, 400);
 
 	// document.getElementsByClassName('searchinput')[0].focus();
@@ -114,22 +114,37 @@ $(document).on('click', '#searchgobutton', function(evt)
 // 	window.location.href = "./directions.html";
 // });
 
-// $(document).on('click', '.pin-div', function(evt)
-// {
-// 	window.location.href = "./directions.html";
-// });
+$(document).on('click', '.mappin', function(evt)
+{
+	var placeName = evt.target.getAttribute('location');
+	window.location.href = "./directions.html?place="+placeName;
+});
 
 $(document).on('click', function(evt)
 {
 	setTimeout(function(){
 		var FILTERS = $(".searchinput").tagsinput('items');
-		var length = FILTERS.length;
+		if (FILTERS) {
+			var length = FILTERS.length;
 
-		if (currentNumFilters != length) {
-			currentNumFilters = length;
-	  	refreshImages();
+			if (currentNumFilters != length) {
+				currentNumFilters = length;
+		  	refreshImages();
+			}
 		}
   }, 1);
+});
+
+$(document).on('mouseenter', '.searchphotodiv', function(evt)
+{
+	var pinText = document.getElementById(evt.currentTarget.getAttribute('pintextid'));
+	pinText.style.visibility=  "visible";
+});
+
+$(document).on('mouseleave', '.searchphotodiv', function(evt)
+{
+	var pinText = document.getElementById(evt.currentTarget.getAttribute('pintextid'));
+	pinText.style.visibility=  "hidden";
 });
 
 $(document).on('mouseenter', '.pin-div', function(evt)
@@ -192,6 +207,7 @@ function refreshImages()
 		var src = './images/'+available[random][2]+'.jpg';
 
 		var photoDiv = document.createElement('div');
+		photoDiv.setAttribute('class', 'searchphotodiv');
 
 		var photo = document.createElement('div');
 		photo.setAttribute('id', 'photo-'+p);
@@ -261,18 +277,21 @@ function refreshImages()
 		pin.setAttribute('class', 'mappin');
 		pin.setAttribute('type', 'image');
 		pin.setAttribute('src', './images/mappin.png');
+		pin.setAttribute('location', title.innerHTML);
 		button.appendChild(pin);
 		document.getElementById('mapcontainer').appendChild(button);
 
 		var pinText = document.createElement('label');
 		pinText.setAttribute('class', 'searchpintext');
 		pinText.setAttribute('id', 'text-realpin-' + randomX + '-' + randomY);
+		pinText.setAttribute('location', title.innerHTML);
 		pinText.innerHTML = title.innerHTML;
 		pinText.style.visibility=  "hidden";
 		button.appendChild(pinText);
 
 		photoDiv.appendChild(photo);
 		photoDiv.appendChild(titleHolder);
+		photoDiv.setAttribute('pintextid', 'text-realpin-' + randomX + '-' + randomY);
 
 		if (p%2 == 0) {
 			var column = document.getElementById('search-col-1');

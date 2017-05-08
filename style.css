@@ -391,6 +391,8 @@ body {
 	color: blue;
 	top: -20px;
 	position: relative;
+	background-color: white;
+	z-index: 250;
 }
 
 #mapimage {
