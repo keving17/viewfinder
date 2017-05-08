@@ -56,7 +56,7 @@ $(document).on('click', '.heart', function(evt)
 	}
 });
 
-$(document).on('click', '.searchpinimage', function(evt)
+$(document).on('click', '.pinimage', function(evt)
 {
 	toastr.options = {
 	  "closeButton": false,
@@ -76,8 +76,8 @@ $(document).on('click', '.searchpinimage', function(evt)
 	  "hideMethod": "fadeOut"
 	}
 
-	if (evt.target.style.opacity == 0.25) {
-		evt.target.style.opacity = 1.0;
+	if (evt.target.getAttribute('class').indexOf('unpinned')>=0) {
+		evt.target.setAttribute('class', 'pinimage pinned');
 
 		toastr.success('Added ' + evt.target.getAttribute('title') + ' to Pinned');
 
@@ -106,10 +106,8 @@ $(document).on('click', '.searchpinimage', function(evt)
 		// pinText.style.visibility=  "hidden";
 		// button.appendChild(pinText);
 	} else {
-		evt.target.style.opacity = 0.25;
-
-		toastr.success('Removed ' + evt.target.getAttribute('title') + ' from Pinned');
-
+		evt.target.setAttribute('class', 'pinimage unpinned');
+		toastr.success('Removed ' + evt.target.getAttribute('title') + ' Pin');
 		// // Hide pin
 		// var mapX = evt.target.getAttribute('mapx');
 		// var mapY = evt.target.getAttribute('mapy');
@@ -212,9 +210,9 @@ function refreshImages()
 		var pin = document.createElement('input');
 		pin.setAttribute('type', 'image');
 		pin.setAttribute('src', './pin.png');
-		pin.setAttribute('class', 'searchpinimage');
+		pin.setAttribute('class', 'pinimage unpinned');
 		pin.setAttribute('title', available[random][0]);
-		pin.style.filter = 'contrast(100%)'
+		//pin.style.filter = 'contrast(100%)'
 	  	
 	  	var map = document.getElementById('mapimage');
 		var mapWidth = map.clientWidth;
@@ -247,7 +245,7 @@ function refreshImages()
 		document.getElementById('mapcontainer').appendChild(button);
 
 		var pinText = document.createElement('label');
-		pinText.setAttribute('class', 'searchpintext');
+		pinText.setAttribute('class', 'pintext');
 		pinText.setAttribute('id', 'text-pin-' + randomX + '-' + randomY);
 		pinText.innerHTML = title.innerHTML;
 		pinText.style.visibility=  "hidden";
@@ -268,10 +266,10 @@ function refreshImages()
 		available.splice(random,1);
 	}
 
-	var pins = document.getElementsByClassName('searchpinimage');
+	var pins = document.getElementsByClassName('pinimage');
 	for (p=0; p<pins.length; p++) {
 		var pin = pins[p];
-		pin.style.opacity = 0.25;
+		pin.setAttribute('class', 'pinimage unpinned');
 	}
 }
 

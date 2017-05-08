@@ -120,22 +120,23 @@ $(document).on('click', '.pinimage', function(evt)
 {
 	console.log(evt.target.getAttribute('class'))
 
-	console.log('pinimage',evt.target.getAttribute('class').indexOf('pinimage'))
-	console.log('pin',evt.target.getAttribute('class').indexOf('in'))
+	console.log('unpinned',evt.target.getAttribute('class').indexOf('unpinned'))
 	//$(evt.target).css('pointer-events','none');
 
 	$(evt.target).data('delete',true);
 
 	var photo = evt.target.parentElement.parentElement.cloneNode(true);
 	var heart = photo.childNodes[0].childNodes[0];
+	var selection = evt.target.parentElement.parentElement.parentElement;
 
-	if (evt.target.getAttribute('class').indexOf('pinned')>=0) {
-		evt.target.setAttribute('class', 'pinimage pin unpinned');
+	if (evt.target.getAttribute('class').indexOf('unpinned')>=0) {
+		evt.target.setAttribute('class', 'pinimage pin pinned');
 		console.log(evt.target.id)
+		toastr.success('Added ' + evt.target.getAttribute('title') + ' Pin');
 
-		//toastr.success('Removed ' + evt.target.getAttribute('title') + ' Pin.' );
+	} else {
+		evt.target.setAttribute('class', 'pinimage pin unpinned');
 		toastr.success('<div>Removed '+evt.target.getAttribute('title')+ ' Pin. <a href="javascript:undoUnpin('+ evt.target.id+ ')">Click here to undo!</a></div>')
-		var selection = evt.target.parentElement.parentElement.parentElement;
 		$(selection).css('pointer-events','none');
 		$('#'+selection.id).fadeOut(3000,function(){
   			if ($(evt.target).data('delete')) {
@@ -149,9 +150,6 @@ $(document).on('click', '.pinimage', function(evt)
 
   			}
   		});
-	} else {
-		evt.target.setAttribute('class', 'pinimage pin pinned');
-		toastr.success('Added ' + evt.target.getAttribute('title') + ' Pin');
 		$(selection).css('pointer-events','auto');
 	}
 });
