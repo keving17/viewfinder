@@ -32,11 +32,27 @@ body {
 
 #navigation a {
 	color: white;
+	padding: 10px 20px;
+}
+
+#navigation h3 {
+	margin-left: 0;
+	margin-right: 0;
+}
+
+#navigation h3 a {
+	border-radius: 6px;
+	width: 200px;
 }
 
 #navigation h3 a:hover {
 	text-decoration: underline;
 	color: rgba(25,25,25,1);
+	background-color: #bf9b60;
+}
+
+#navigation a.active-tab {
+	background-color: #bf9b60;
 }
 
 #navigation div h3 {
@@ -46,6 +62,13 @@ body {
 	font-size: 20px;
 	float: right;
 	font-weight: 300;
+}
+
+#tab {
+	margin: 0px;
+	width:50px;
+	height: 20px;
+	background-color: black;
 }
 
 .help-text {
@@ -68,7 +91,7 @@ body {
 .content h2 {
 	font-weight: 700;
 	background-color: rgb(228, 179, 99);
-	color: rgb(120, 120, 120);
+	color: black;
 	display: block;
 	padding: 10px 0;
 	margin: 0;
